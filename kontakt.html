@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt &amp; Projektanfrage — SDX Solutions</title>
+    <meta name="description" content="Kontaktieren Sie SDX Solutions UG (haftungsbeschränkt) für Websites, Apps, individuelle Software, Tools und Webservices.">
+    <meta name="robots" content="index, follow"><meta name="theme-color" content="#050505"><link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="landing.css">
+</head>
+<body class="subpage">
+    <nav id="main-nav" class="is-scrolled" aria-label="Hauptnavigation">
+        <div class="nav-inner"><a href="index.html" class="nav-logo" aria-label="SDX Solutions Startseite">SDX <span>Solutions</span></a><div class="nav-links"><a href="index.html">Startseite</a><a href="ueber-uns.html">Über SDX Solutions</a><a href="snusdex.html">Snusdex</a><a href="kontakt.html" aria-current="page">Kontakt</a></div><button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menü</button><a href="#anfrage" class="nav-cta">Projekt anfragen</a></div>
+        <div class="mobile-nav" id="mobile-nav" hidden><a href="index.html">Startseite</a><a href="ueber-uns.html">Über SDX Solutions</a><a href="snusdex.html">Snusdex</a><a href="kontakt.html" aria-current="page">Kontakt</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+    </nav>
+
+    <main>
+        <header class="page-hero page-hero--compact"><div class="container page-hero-inner"><span class="eyebrow">Kontakt</span><h1>Erzählen Sie uns,<br><em>was entstehen soll.</em></h1><p>Wir nehmen Projekte von Unternehmen und Privatpersonen an. Eine kurze, klare Beschreibung reicht für den ersten Schritt.</p></div></header>
+
+        <section id="anfrage" class="section section--subpage">
+            <div class="container contact-layout">
+                <aside class="contact-aside">
+                    <span class="eyebrow">Direkter Kontakt</span>
+                    <a class="contact-email" href="mailto:norman@sdxsolutions.de">norman@sdxsolutions.de</a>
+                    <p>SDX Solutions UG (haftungsbeschränkt)<br>Hauptstraße 12 1/2<br>84416 Taufkirchen (Vils)</p>
+                    <div class="contact-topic-list"><span>Websites</span><span>Mobile Apps</span><span>Tools &amp; Automatisierung</span><span>Webservices</span></div>
+                </aside>
+
+                <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
+                    <div class="form-row">
+                        <div class="form-field"><label for="name">Name *</label><input id="name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
+                        <div class="form-field"><label for="email">E-Mail *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="160" required></div>
+                    </div>
+                    <div class="form-field"><label for="company">Unternehmen <span>optional</span></label><input id="company" name="company" type="text" autocomplete="organization" maxlength="120"></div>
+                    <div class="form-field"><label for="message">Nachricht *</label><textarea id="message" name="message" rows="7" maxlength="5000" required placeholder="Worum geht es, was ist das Ziel und gibt es bereits einen zeitlichen Rahmen?"></textarea></div>
+                    <div class="form-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+                    <div class="form-submit-row"><button class="button button--primary" type="submit">Anfrage senden <span aria-hidden="true">→</span></button><p>Mit dem Absenden werden Ihre Angaben zur Bearbeitung der Anfrage verarbeitet. Details stehen in der <a href="datenschutz.html#kontaktformular">Datenschutzerklärung</a>.</p></div>
+                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-main"><div><a href="index.html" class="footer-logo">SDX <span>Solutions UG (haftungsbeschränkt)</span></a><p>Software. Apps. Webservices. IT-Dienstleistungen.</p></div><div class="footer-link-groups"><div><span>Unternehmen</span><a href="ueber-uns.html">Über uns</a><a href="kontakt.html">Kontakt</a></div><div><span>Produkte</span><a href="snusdex.html">Snusdex</a><a href="index.html#fuelpilot">FuelPilot</a></div><div><span>Rechtliches</span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div><div><span>Direkt</span><a href="mailto:norman@sdxsolutions.de">norman@sdxsolutions.de</a></div></div></div>
+        <div class="container footer-bottom"><span>© 2026 SDX Solutions UG (haftungsbeschränkt)</span><span>Entwicklung und Vertrieb digitaler Produkte</span></div>
+    </footer>
+    <script src="landing.js"></script>
+</body>
+</html>

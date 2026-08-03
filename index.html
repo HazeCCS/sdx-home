@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDX Solutions UG — Software, Apps &amp; IT-Dienstleistungen</title>
+    <title>SDX Solutions UG (haftungsbeschränkt) — Software &amp; IT-Dienstleistungen</title>
     <meta name="description"
-        content="SDX Solutions UG entwickelt Websites, mobile Apps, individuelle Software und Webservices. Wir veröffentlichen eigene Produkte und realisieren IT-Projekte für Unternehmen.">
+        content="SDX Solutions UG (haftungsbeschränkt) entwickelt Websites, mobile Apps, individuelle Software und Webservices für Unternehmen und Privatpersonen.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="SDX Solutions UG — Digitale Lösungen, die funktionieren">
+    <meta property="og:title" content="SDX Solutions UG (haftungsbeschränkt) — Digitale Lösungen">
     <meta property="og:description"
         content="Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie IT-Dienstleistungen für Unternehmen.">
     <meta property="og:type" content="website">
@@ -19,9 +19,16 @@
     {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "SDX Solutions UG",
+        "name": "SDX Solutions UG (haftungsbeschränkt)",
         "description": "Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie Erbringung von IT-Dienstleistungen.",
-        "email": "tarayannorman@gmail.com",
+        "email": "norman@sdxsolutions.de",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Hauptstraße 12 1/2",
+            "postalCode": "84416",
+            "addressLocality": "Taufkirchen (Vils)",
+            "addressCountry": "DE"
+        },
         "knowsAbout": ["Softwareentwicklung", "Webentwicklung", "Mobile Apps", "Webservices", "Software Publishing", "IT-Dienstleistungen"]
     }
     </script>
@@ -35,14 +42,23 @@
 <body>
     <nav id="main-nav" aria-label="Hauptnavigation">
         <div class="nav-inner">
-            <a href="#hero" class="nav-logo" aria-label="SDX Solutions Startseite">SDX <span>Solutions</span></a>
+            <a href="index.html" class="nav-logo" aria-label="SDX Solutions Startseite">SDX <span>Solutions</span></a>
             <div class="nav-links">
-                <a href="#products">Produkte</a>
-                <a href="#snusdex">Snusdex</a>
-                <a href="#fuelpilot">FuelPilot</a>
-                <a href="#services">Leistungen</a>
+                <a href="index.html" aria-current="page">Startseite</a>
+                <a href="ueber-uns.html">Über SDX Solutions</a>
+                <a href="snusdex.html">Snusdex</a>
+                <a href="kontakt.html">Kontakt</a>
             </div>
-            <a href="#contact" class="nav-cta">Projekt anfragen</a>
+            <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menü</button>
+            <a href="kontakt.html#anfrage" class="nav-cta">Projekt anfragen</a>
+        </div>
+        <div class="mobile-nav" id="mobile-nav" hidden>
+            <a href="index.html" aria-current="page">Startseite</a>
+            <a href="ueber-uns.html">Über SDX Solutions</a>
+            <a href="snusdex.html">Snusdex</a>
+            <a href="kontakt.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
         </div>
     </nav>
 
@@ -55,7 +71,7 @@
                 <h1 id="hero-title">Software, die<br><em>Unternehmen weiterbringt.</em></h1>
                 <p>Wir entwickeln digitale Produkte, Websites, mobile Apps und individuelle Tools – für eigene Ideen und im Auftrag von Unternehmen.</p>
                 <div class="hero-actions">
-                    <a class="button button--primary" href="#contact">Projekt besprechen <span aria-hidden="true">→</span></a>
+                    <a class="button button--primary" href="kontakt.html#anfrage">Projekt besprechen <span aria-hidden="true">→</span></a>
                     <a class="text-link" href="#products">Produkte ansehen <span aria-hidden="true">↓</span></a>
                 </div>
             </div>
@@ -182,7 +198,7 @@
                         <h2 id="contact-title">Was können wir für Sie bauen?</h2>
                         <p>Eine kurze Beschreibung reicht für den Anfang. Wir melden uns mit einer ehrlichen Einschätzung zum nächsten Schritt.</p>
                     </div>
-                    <a class="button button--dark" href="mailto:tarayannorman@gmail.com?subject=Projektanfrage%20an%20SDX%20Solutions%20UG">Projekt anfragen <span aria-hidden="true">→</span></a>
+                    <a class="button button--dark" href="kontakt.html#anfrage">Projekt anfragen <span aria-hidden="true">→</span></a>
                 </div>
             </div>
         </section>
@@ -191,19 +207,18 @@
     <footer>
         <div class="container footer-main">
             <div>
-                <a href="#hero" class="footer-logo">SDX <span>Solutions UG</span></a>
+                <a href="index.html" class="footer-logo">SDX <span>Solutions UG (haftungsbeschränkt)</span></a>
                 <p>Software. Apps. Webservices. IT-Dienstleistungen.</p>
             </div>
-            <div class="footer-links">
-                <a href="#products">Produkte</a>
-                <a href="#services">Leistungen</a>
-                <a href="#contact">Projektanfrage</a>
-                <a href="mailto:tarayannorman@gmail.com">E-Mail</a>
-                <a href="https://github.com/SDX-Solutions-UG" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <div class="footer-link-groups">
+                <div><span>Unternehmen</span><a href="ueber-uns.html">Über uns</a><a href="kontakt.html">Kontakt</a></div>
+                <div><span>Produkte</span><a href="snusdex.html">Snusdex</a><a href="#fuelpilot">FuelPilot</a></div>
+                <div><span>Rechtliches</span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+                <div><span>Direkt</span><a href="mailto:norman@sdxsolutions.de">norman@sdxsolutions.de</a></div>
             </div>
         </div>
         <div class="container footer-bottom">
-            <span>© 2026 SDX Solutions UG</span>
+            <span>© 2026 SDX Solutions UG (haftungsbeschränkt)</span>
             <span>Entwicklung und Vertrieb digitaler Produkte</span>
         </div>
     </footer>
