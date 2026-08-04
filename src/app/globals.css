@@ -258,7 +258,6 @@
     .hero-inner {
         position: relative;
         z-index: 1;
-        padding-top: 100px;
         text-align: center;
     }
 
@@ -1479,10 +1478,6 @@
 
     .page-hero-inner h1 {
         font-size: clamp(48px, 14vw, 68px);
-    }
-
-    .hero-inner {
-        padding-top: 76px;
     }
 
     #hero h1 {

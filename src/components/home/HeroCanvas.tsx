@@ -29,7 +29,7 @@ export function HeroCanvas() {
 
     function roundedSquare(x: number, y: number, size: number) {
       if (!context) return;
-      const radius = Math.min(2, size * 0.12);
+      const radius = size * 0.1875;
       context.beginPath();
       context.roundRect(x, y, size, size, radius);
       context.fill();
@@ -39,7 +39,7 @@ export function HeroCanvas() {
       if (!canvas || !context) return;
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
-      const gap = 2;
+      const gap = 3;
       const cell = (width - gap * (columns - 1)) / columns;
       rows = Math.ceil(height / (cell + gap));
 
@@ -57,9 +57,9 @@ export function HeroCanvas() {
           const waveTwo = 0.54 - 0.12 * Math.sin(nx * 3.4 - t * 0.52 + 1.1);
           const distance = Math.min(Math.abs(ny - waveOne), Math.abs(ny - waveTwo));
           const strength = Math.max(0, 1 - distance / 0.105);
-          const opacity = 0.025 + Math.pow(strength, 1.8) * 0.55;
+          const opacity = 0.10 + Math.pow(strength, 1.0) * 0.95;
 
-          context.fillStyle = "rgba(255, 69, 58, " + opacity.toFixed(3) + ")";
+          context.fillStyle = "rgba(255, 50, 90, " + opacity.toFixed(3) + ")";
           roundedSquare(column * (cell + gap), row * (cell + gap), cell);
         }
       }

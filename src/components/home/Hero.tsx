@@ -12,10 +12,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <HeroCanvas />
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-inner">
-        <div className="availability">
-          <span />
-          {t.availability}
-        </div>
         <h1 id="hero-title">
           {t.titleLine1}
           <br />
