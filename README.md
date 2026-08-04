@@ -1,32 +1,61 @@
 # SDX Solutions UG (haftungsbeschränkt) — Unternehmenswebsite
 
-Unternehmenswebsite für Softwareentwicklung, mobile Apps, Websites, Webservices, Publishing und IT-Dienstleistungen.
+Moderne Neuerstellung der Unternehmenswebsite auf Basis von Next.js (App Router), React, TypeScript, Tailwind CSS und Motion for React. Das sichtbare Ergebnis entspricht der bisherigen statischen Website; die technische Basis ist vollständig modernisiert und langfristig erweiterbar.
 
-## Seiten
+## Tech-Stack
 
-- Startseite (`index.html`)
-- Über SDX Solutions (`ueber-uns.html`)
-- Snusdex (`snusdex.html`)
-- Kontakt und Projektanfrage (`kontakt.html`)
-- Impressum (`impressum.html`)
-- Datenschutzerklärung (`datenschutz.html`)
+- Next.js 15 (App Router)
+- React 19 und TypeScript
+- Tailwind CSS v4 (Design-Tokens über `@theme`)
+- Motion for React (Interaktionen)
+- Node.js (Entwicklung und Build)
 
-## Lokal ansehen
-
-Abhängigkeiten installieren und die statischen Seiten lokal starten:
+## Entwicklung
 
 ```bash
 npm install
-python3 -m http.server 4173
+npm run dev
 ```
 
-Danach ist die Website unter `http://127.0.0.1:4173` erreichbar.
+Die Website ist danach unter `http://localhost:3000` erreichbar.
 
-Der einfache Python-Server führt die Vercel-Funktion unter `/api/contact` nicht aus. Das Formular funktioniert nach dem Deployment auf Vercel.
+Weitere Skripte:
 
-## Kontaktformular auf Vercel einrichten
+```bash
+npm run build
+npm run start
+npm run typecheck
+```
 
-Die Serverless-Funktion `api/contact.js` versendet Anfragen per IONOS SMTP. In den Projekteinstellungen bei Vercel müssen folgende Environment Variables für Production, Preview und bei Bedarf Development hinterlegt werden:
+## Projektstruktur
+
+```text
+src/
+  app/                  App-Router-Seiten, Layout, globals.css, API-Route
+    api/contact/        Route Handler für das Kontaktformular
+  components/
+    layout/             Navbar, Footer
+    home/               Hero, Products, Services, Process
+    product/            ProductCard
+    contact/            ContactForm
+    ui/                 Button, Eyebrow, StoreLinks, ContactCta
+  lib/                  Seitendaten und Animations-Presets
+public/                 Bilder und Favicon
+archive/                Unveränderte Sicherung der bisherigen Website
+```
+
+## Routen
+
+- `/` Startseite
+- `/ueber-uns`
+- `/snusdex`
+- `/kontakt`
+- `/impressum`
+- `/datenschutz`
+
+## Kontaktformular
+
+Die Route `src/app/api/contact/route.ts` versendet Anfragen per IONOS SMTP über Nodemailer. Folgende Environment Variables müssen gesetzt werden (siehe `.env.example`):
 
 ```text
 SMTP_HOST=smtp.ionos.de
@@ -36,4 +65,4 @@ SMTP_PASS=<Passwort des IONOS-Postfachs>
 CONTACT_TO=norman@sdxsolutions.de
 ```
 
-Das Passwort darf niemals in Git oder in eine HTML-/JavaScript-Datei geschrieben werden. Nach dem Setzen der Variablen muss das Vercel-Deployment erneut ausgelöst werden.
+Das Passwort darf niemals in Git oder in Quellcode geschrieben werden.
