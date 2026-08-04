@@ -1,13 +1,39 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+import { createPageMetadata } from "@/i18n/metadata";
+import { href } from "@/i18n/routing";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { LegalNotice } from "@/components/legal/LegalNotice";
 
-export const metadata: Metadata = {
-  title: "Datenschutzerklärung — SDX Solutions UG (haftungsbeschränkt)",
-  description:
-    "Datenschutzerklärung der SDX Solutions UG (haftungsbeschränkt) für Website, Kontaktformular, Hosting und Webfonts.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  return createPageMetadata(locale, "privacy");
+}
 
-export default function PrivacyPage() {
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+
+  if (locale !== "de") {
+    return (
+      <LegalNotice
+        eyebrow={dict.legalNotice.eyebrow}
+        title={dict.legalNotice.privacyTitle}
+        body={dict.legalNotice.body}
+        viewGermanLabel={dict.legalNotice.viewGerman}
+        germanHref={href("de", "privacy")}
+      />
+    );
+  }
+
   return (
     <main className="subpage">
       <header className="page-hero page-hero--legal">
@@ -143,9 +169,10 @@ export default function PrivacyPage() {
               <span className="legal-index">05</span>
               <h2>Cookies, Analyse und Marketing</h2>
               <p>
-                Diese Website setzt derzeit keine Analyse-, Marketing- oder Trackingdienste ein.
-                Insbesondere verwenden wir weder Vercel Web Analytics noch Werbetracker. Durch uns
-                werden keine nicht technisch erforderlichen Cookies gesetzt.
+                Diese Website setzt zur Speicherung Ihrer Sprachwahl ein technisch notwendiges Cookie
+                (Sprachpräferenz) ein. Analyse-, Marketing- oder Trackingdienste werden nicht
+                eingesetzt. Insbesondere verwenden wir weder Vercel Web Analytics noch Werbetracker
+                und setzen keine nicht technisch erforderlichen Cookies.
               </p>
             </section>
 

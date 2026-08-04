@@ -1,7 +1,12 @@
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
+import { href } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
 import { HeroCanvas } from "@/components/home/HeroCanvas";
 
-export function Hero() {
+export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const t = dict.hero;
+
   return (
     <section id="hero" aria-labelledby="hero-title">
       <HeroCanvas />
@@ -9,31 +14,27 @@ export function Hero() {
       <div className="hero-inner">
         <div className="availability">
           <span />
-          Offen für neue IT-Projekte
+          {t.availability}
         </div>
         <h1 id="hero-title">
-          Software, die
+          {t.titleLine1}
           <br />
-          <em>Unternehmen weiterbringt.</em>
+          <em>{t.titleEm}</em>
         </h1>
-        <p>
-          Wir entwickeln digitale Produkte, Websites, mobile Apps und individuelle Tools – für eigene
-          Ideen und im Auftrag von Unternehmen.
-        </p>
+        <p>{t.paragraph}</p>
         <div className="hero-actions">
-          <Button href="/kontakt#anfrage" variant="primary">
-            Projekt besprechen
+          <Button href={href(locale, "contact", "anfrage")} variant="primary">
+            {t.ctaPrimary}
           </Button>
           <a className="text-link" href="#products">
-            Produkte ansehen <span aria-hidden="true">↓</span>
+            {t.productsLink} <span aria-hidden="true">↓</span>
           </a>
         </div>
       </div>
-      <div className="hero-capabilities" aria-label="Leistungsbereiche">
-        <span>Softwareentwicklung</span>
-        <span>Mobile Apps</span>
-        <span>Webservices</span>
-        <span>IT-Dienstleistungen</span>
+      <div className="hero-capabilities" aria-label={t.capabilitiesAria}>
+        {t.capabilities.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
     </section>
   );

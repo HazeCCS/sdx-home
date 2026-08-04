@@ -4,19 +4,36 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { mobileNav, primaryNav } from "@/lib/site";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
+import { href, localizedPath, routes, type RouteKey } from "@/i18n/routing";
 
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href;
-}
+type NavbarProps = {
+  locale: Locale;
+  dict: Dictionary;
+};
 
-export function Navbar() {
+export function Navbar({ locale, dict }: NavbarProps) {
   const pathname = usePathname();
-  const isSubpage = pathname !== "/";
+  const isSubpage = pathname !== localizedPath(locale);
   const [scrolled, setScrolled] = useState(isSubpage);
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  const primaryLinks: { key: RouteKey; label: string }[] = [
+    { key: "home", label: dict.nav.home },
+    { key: "about", label: dict.nav.about },
+    { key: "snusdex", label: dict.nav.snusdex },
+    { key: "contact", label: dict.nav.contact },
+  ];
+
+  const mobileLinks: { key: RouteKey; label: string }[] = [
+    ...primaryLinks,
+    { key: "imprint", label: dict.footer.imprintLink },
+    { key: "privacy", label: dict.footer.privacyLink },
+  ];
+
+  const isActive = (key: RouteKey) => pathname === localizedPath(locale, routes[key]);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 24);
@@ -47,17 +64,17 @@ export function Navbar() {
   }, [pathname, closeMenu]);
 
   return (
-    <nav id="main-nav" className={scrolled ? "is-scrolled" : undefined} aria-label="Hauptnavigation">
+    <nav id="main-nav" className={scrolled ? "is-scrolled" : undefined} aria-label={dict.nav.ariaLabel}>
       <div className="nav-inner">
-        <Link href="/" className="nav-logo" aria-label="SDX Solutions Startseite">
+        <Link href={localizedPath(locale)} className="nav-logo" aria-label={dict.nav.logoAria}>
           SDX <span>Solutions</span>
         </Link>
         <div className="nav-links">
-          {primaryNav.map((link) => (
+          {primaryLinks.map((link) => (
             <Link
-              key={link.href}
-              href={link.href}
-              aria-current={isActive(pathname, link.href) ? "page" : undefined}
+              key={link.key}
+              href={href(locale, link.key)}
+              aria-current={isActive(link.key) ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -70,10 +87,10 @@ export function Navbar() {
           aria-controls="mobile-nav"
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? "Schließen" : "Menü"}
+          {open ? dict.nav.menuClose : dict.nav.menuOpen}
         </button>
-        <Link href="/kontakt#anfrage" className="nav-cta">
-          Projekt anfragen
+        <Link href={href(locale, "contact", "anfrage")} className="nav-cta">
+          {dict.nav.cta}
         </Link>
       </div>
 
@@ -88,11 +105,11 @@ export function Navbar() {
             transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: "hidden" }}
           >
-            {mobileNav.map((link) => (
+            {mobileLinks.map((link) => (
               <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive(pathname, link.href) ? "page" : undefined}
+                key={link.key}
+                href={href(locale, link.key)}
+                aria-current={isActive(link.key) ? "page" : undefined}
                 onClick={closeMenu}
               >
                 {link.label}

@@ -2,10 +2,18 @@
 
 import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
+import { href } from "@/i18n/routing";
 
 type StatusState = "" | "success" | "error";
 
-export function ContactForm() {
+type ContactFormProps = {
+  locale: Locale;
+  form: Dictionary["contact"]["form"];
+};
+
+export function ContactForm({ locale, form }: ContactFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState<{ message: string; state: StatusState }>({
@@ -22,51 +30,43 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = formRef.current;
-    if (!form) return;
+    const node = formRef.current;
+    if (!node) return;
 
     setStatus({ message: "", state: "" });
 
     const requiredFields = Array.from(
-      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]"),
+      node.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]"),
     );
     requiredFields.forEach((field) => {
       if (!field.checkValidity()) field.setAttribute("aria-invalid", "true");
     });
 
-    if (!form.checkValidity()) {
-      setStatus({ message: "Bitte füllen Sie alle Pflichtfelder korrekt aus.", state: "error" });
-      form.reportValidity();
+    if (!node.checkValidity()) {
+      setStatus({ message: form.statusValidation, state: "error" });
+      node.reportValidity();
       return;
     }
 
-    const values = Object.fromEntries(new FormData(form).entries());
+    const values = Object.fromEntries(new FormData(node).entries());
     setSending(true);
-    setStatus({ message: "Ihre Anfrage wird sicher übermittelt.", state: "" });
+    setStatus({ message: form.statusSending, state: "" });
 
     try {
-      const response = await fetch(form.action, {
+      const response = await fetch(node.action, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.message || "Die Anfrage konnte gerade nicht gesendet werden.");
+        throw new Error("request-failed");
       }
 
-      form.reset();
-      setStatus({
-        message: result.message || "Vielen Dank. Ihre Anfrage wurde erfolgreich gesendet.",
-        state: "success",
-      });
-    } catch (error) {
-      const message =
-        error instanceof Error && error.message
-          ? error.message
-          : "Die Anfrage konnte gerade nicht gesendet werden. Bitte schreiben Sie uns direkt per E-Mail.";
-      setStatus({ message, state: "error" });
+      node.reset();
+      setStatus({ message: form.statusSuccess, state: "success" });
+    } catch {
+      setStatus({ message: form.statusError, state: "error" });
     } finally {
       setSending(false);
     }
@@ -85,11 +85,11 @@ export function ContactForm() {
     >
       <div className="form-row">
         <div className="form-field">
-          <label htmlFor="name">Name *</label>
+          <label htmlFor="name">{form.nameLabel}</label>
           <input id="name" name="name" type="text" autoComplete="name" maxLength={100} required />
         </div>
         <div className="form-field">
-          <label htmlFor="email">E-Mail *</label>
+          <label htmlFor="email">{form.emailLabel}</label>
           <input
             id="email"
             name="email"
@@ -102,19 +102,19 @@ export function ContactForm() {
       </div>
       <div className="form-field">
         <label htmlFor="company">
-          Unternehmen <span>optional</span>
+          {form.companyLabel} <span>{form.companyOptional}</span>
         </label>
         <input id="company" name="company" type="text" autoComplete="organization" maxLength={120} />
       </div>
       <div className="form-field">
-        <label htmlFor="message">Nachricht *</label>
+        <label htmlFor="message">{form.messageLabel}</label>
         <textarea
           id="message"
           name="message"
           rows={7}
           maxLength={5000}
           required
-          placeholder="Worum geht es, was ist das Ziel und gibt es bereits einen zeitlichen Rahmen?"
+          placeholder={form.messagePlaceholder}
         />
       </div>
       <div className="form-honeypot" aria-hidden="true">
@@ -124,17 +124,16 @@ export function ContactForm() {
       <div className="form-submit-row">
         <button className="button button--primary" type="submit" disabled={sending}>
           {sending ? (
-            "Wird gesendet …"
+            form.sending
           ) : (
             <>
-              Anfrage senden <span aria-hidden="true">→</span>
+              {form.submit} <span aria-hidden="true">→</span>
             </>
           )}
         </button>
         <p>
-          Mit dem Absenden werden Ihre Angaben zur Bearbeitung der Anfrage verarbeitet. Details
-          stehen in der{" "}
-          <Link href="/datenschutz#kontaktformular">Datenschutzerklärung</Link>.
+          {form.privacyNote}{" "}
+          <Link href={href(locale, "privacy", "kontaktformular")}>{form.privacyLink}</Link>.
         </p>
       </div>
       <p

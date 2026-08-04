@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import { notFound } from "next/navigation";
+import "../globals.css";
+import { isLocale, locales } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://sdxsolutions.de"),
-  title: "SDX Solutions UG (haftungsbeschränkt) — Software & IT-Dienstleistungen",
-  description:
-    "SDX Solutions UG (haftungsbeschränkt) entwickelt Websites, mobile Apps, individuelle Software und Webservices für Unternehmen und Privatpersonen.",
   robots: { index: true, follow: true },
-  openGraph: {
-    title: "SDX Solutions UG (haftungsbeschränkt) — Digitale Lösungen",
-    description:
-      "Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie IT-Dienstleistungen für Unternehmen.",
-    type: "website",
-  },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
@@ -24,9 +24,20 @@ export const viewport: Viewport = {
   themeColor: "#050505",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+
+  const dict = getDictionary(locale);
+
   return (
-    <html lang="de">
+    <html lang={locale}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -36,9 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Navbar />
+        <Navbar locale={locale} dict={dict} />
         {children}
-        <Footer />
+        <Footer locale={locale} dict={dict} />
       </body>
     </html>
   );

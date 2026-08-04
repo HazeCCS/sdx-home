@@ -1,12 +1,39 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+import { createPageMetadata } from "@/i18n/metadata";
+import { href } from "@/i18n/routing";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { LegalNotice } from "@/components/legal/LegalNotice";
 
-export const metadata: Metadata = {
-  title: "Impressum — SDX Solutions UG (haftungsbeschränkt)",
-  description: "Impressum und Anbieterkennzeichnung der SDX Solutions UG (haftungsbeschränkt).",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  return createPageMetadata(locale, "imprint");
+}
 
-export default function ImprintPage() {
+export default async function ImprintPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+
+  if (locale !== "de") {
+    return (
+      <LegalNotice
+        eyebrow={dict.legalNotice.eyebrow}
+        title={dict.legalNotice.imprintTitle}
+        body={dict.legalNotice.body}
+        viewGermanLabel={dict.legalNotice.viewGerman}
+        germanHref={href("de", "imprint")}
+      />
+    );
+  }
+
   return (
     <main className="subpage">
       <header className="page-hero page-hero--legal">
@@ -62,7 +89,7 @@ export default function ImprintPage() {
               </p>
               <p>
                 Für Projektanfragen steht außerdem unser{" "}
-                <a href="/kontakt#anfrage">Kontaktformular</a> zur Verfügung.
+                <a href={href("de", "contact", "anfrage")}>Kontaktformular</a> zur Verfügung.
               </p>
             </section>
             <section id="streitbeilegung" className="legal-section">
