@@ -423,8 +423,8 @@
     }
 
     .product-card--snusdex {
-        --product-shot: url('/SDSC.jpg');
-        --product-position: center 8%;
+        --product-shot: url('/snusdex-collector.jpg');
+        --product-position: center;
     }
 
     .product-card--fuelpilot {
