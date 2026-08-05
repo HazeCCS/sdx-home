@@ -5,6 +5,7 @@ import { useRef, useState, type FormEvent } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { href } from "@/i18n/routing";
+import { reveal } from "@/motion/reveal";
 
 type StatusState = "" | "success" | "error";
 
@@ -82,6 +83,7 @@ export function ContactForm({ locale, form }: ContactFormProps) {
       ref={formRef}
       onInput={handleInput}
       onSubmit={handleSubmit}
+      {...reveal(0)}
     >
       <div className="form-row">
         <div className="form-field">

@@ -5,6 +5,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { localeCookie, locales, type Locale } from "@/i18n/config";
 import { swapLocaleInPath } from "@/i18n/routing";
+import { indicatorSpring } from "@/motion/tokens";
 
 const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
@@ -43,9 +44,7 @@ export function LanguageSwitcher({
     return () => window.removeEventListener("resize", measure);
   }, [locale]);
 
-  const spring = reduceMotion
-    ? { duration: 0 }
-    : ({ type: "spring", stiffness: 320, damping: 30 } as const);
+  const spring = reduceMotion ? { duration: 0 } : indicatorSpring;
 
   const select = (target: Locale) => {
     if (target === locale) return;

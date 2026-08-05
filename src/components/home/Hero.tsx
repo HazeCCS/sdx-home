@@ -3,6 +3,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { href } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
 import { HeroCanvas } from "@/components/home/HeroCanvas";
+import { reveal } from "@/motion/reveal";
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.hero;
@@ -12,13 +13,13 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <HeroCanvas />
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-inner">
-        <h1 id="hero-title">
+        <h1 id="hero-title" {...reveal(0)}>
           {t.titleLine1}
           <br />
           <em>{t.titleEm}</em>
         </h1>
-        <p>{t.paragraph}</p>
-        <div className="hero-actions">
+        <p {...reveal(1)}>{t.paragraph}</p>
+        <div className="hero-actions" {...reveal(2)}>
           <Button href={href(locale, "contact", "anfrage")} variant="primary">
             {t.ctaPrimary}
           </Button>

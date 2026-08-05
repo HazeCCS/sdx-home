@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/i18n/dictionaries";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ProductCard, type Product } from "@/components/product/ProductCard";
+import { reveal } from "@/motion/reveal";
 
 export function Products({ dict }: { dict: Dictionary }) {
   const t = dict.products;
@@ -38,17 +38,16 @@ export function Products({ dict }: { dict: Dictionary }) {
   return (
     <section id="products" className="section section--products" aria-labelledby="products-title">
       <div className="container">
-        <header className="section-header">
+        <header className="section-header" {...reveal(0)}>
           <div>
-            <Eyebrow>{t.eyebrow}</Eyebrow>
             <h2 id="products-title">{t.title}</h2>
           </div>
           <p>{t.intro}</p>
         </header>
 
         <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product, index) => (
+            <ProductCard key={product.id} product={product} revealOrder={index} />
           ))}
         </div>
       </div>

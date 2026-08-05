@@ -1,9 +1,8 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { reveal } from "@/motion/reveal";
 
 type ContactCtaProps = {
-  eyebrow: string;
   title: ReactNode;
   text: string;
   buttonLabel: string;
@@ -13,7 +12,6 @@ type ContactCtaProps = {
 };
 
 export function ContactCta({
-  eyebrow,
   title,
   text,
   buttonLabel,
@@ -28,9 +26,8 @@ export function ContactCta({
       aria-labelledby={titleId}
     >
       <div className="container">
-        <div className="contact-panel">
+        <div className="contact-panel" {...reveal(0)}>
           <div>
-            <Eyebrow>{eyebrow}</Eyebrow>
             <h2 id={titleId}>{title}</h2>
             <p>{text}</p>
           </div>

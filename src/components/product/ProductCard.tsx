@@ -1,4 +1,5 @@
 import { StoreLinks } from "@/components/ui/StoreLinks";
+import { reveal } from "@/motion/reveal";
 
 export type Product = {
   id: string;
@@ -13,15 +14,17 @@ export type Product = {
   stores: { label: string; note: string }[];
 };
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, revealOrder = 0 }: { product: Product; revealOrder?: number }) {
   return (
-    <article id={product.id} className={`product-card ${product.variantClass}`}>
+    <article
+      id={product.id}
+      className={`product-card ${product.variantClass}`}
+      {...reveal(revealOrder)}
+    >
       <div className="product-topline">
-        <span className="product-index">{product.index}</span>
         <span className="status">{product.status}</span>
       </div>
       <div className="product-copy">
-        <span className="product-type">{product.type}</span>
         <h3>{product.name}</h3>
         <p>{product.description}</p>
       </div>

@@ -56,7 +56,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <ContactCta
           id="contact"
           titleId="contact-title"
-          eyebrow={dict.homeContact.eyebrow}
           title={dict.homeContact.title}
           text={dict.homeContact.text}
           buttonLabel={dict.homeContact.button}

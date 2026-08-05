@@ -4,8 +4,8 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { LegalNotice } from "@/components/legal/LegalNotice";
+import { reveal, revealFade } from "@/motion/reveal";
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,6 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
   if (locale !== "de") {
     return (
       <LegalNotice
-        eyebrow={dict.legalNotice.eyebrow}
         title={dict.legalNotice.privacyTitle}
         body={dict.legalNotice.body}
         viewGermanLabel={dict.legalNotice.viewGerman}
@@ -37,8 +36,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
   return (
     <main className="subpage">
       <header className="page-hero page-hero--legal">
-        <div className="container page-hero-inner">
-          <Eyebrow>Rechtliches</Eyebrow>
+        <div className="container page-hero-inner" {...reveal(0)}>
           <h1>Datenschutz</h1>
           <p>
             Informationen zur Verarbeitung personenbezogener Daten auf dieser Website. Stand: 3.
@@ -49,7 +47,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
       <section className="section section--subpage">
         <div className="container legal-layout">
-          <aside className="legal-toc" aria-label="Inhalt">
+          <aside className="legal-toc" aria-label="Inhalt" {...revealFade(0)}>
             <span>Auf dieser Seite</span>
             <a href="#verantwortlicher">Verantwortlicher</a>
             <a href="#hosting">Hosting</a>
@@ -59,8 +57,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             <a href="#rechte">Ihre Rechte</a>
           </aside>
           <div className="legal-content">
-            <section id="verantwortlicher" className="legal-section">
-              <span className="legal-index">01</span>
+            <section id="verantwortlicher" className="legal-section" {...reveal(0)}>
               <h2>Verantwortlicher</h2>
               <address>
                 SDX Solutions UG (haftungsbeschränkt)
@@ -74,12 +71,11 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               <p>
                 Vertreten durch den Geschäftsführer Norman Tarayan
                 <br />
-                E-Mail: <a href="mailto:norman@sdxsolutions.de">norman@sdxsolutions.de</a>
+                E-Mail: <a href="mailto:contact@sdxsolutions.de">contact@sdxsolutions.de</a>
               </p>
             </section>
 
-            <section id="hosting" className="legal-section">
-              <span className="legal-index">02</span>
+            <section id="hosting" className="legal-section" {...reveal(0)}>
               <h2>Hosting über Vercel</h2>
               <p>
                 Diese Website wird über Vercel bereitgestellt. Anbieter ist Vercel Inc., 440 N
@@ -111,8 +107,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               </p>
             </section>
 
-            <section id="kontaktformular" className="legal-section">
-              <span className="legal-index">03</span>
+            <section id="kontaktformular" className="legal-section" {...reveal(0)}>
               <h2>Kontaktformular und E-Mail</h2>
               <p>
                 Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, verarbeiten wir
@@ -140,8 +135,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               </p>
             </section>
 
-            <section id="fonts" className="legal-section">
-              <span className="legal-index">04</span>
+            <section id="fonts" className="legal-section" {...reveal(0)}>
               <h2>Google Fonts</h2>
               <p>
                 Wir verwenden Google Fonts, einen Dienst der Google Ireland Limited, Gordon House,
@@ -165,8 +159,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               </p>
             </section>
 
-            <section id="cookies" className="legal-section">
-              <span className="legal-index">05</span>
+            <section id="cookies" className="legal-section" {...reveal(0)}>
               <h2>Cookies, Analyse und Marketing</h2>
               <p>
                 Diese Website setzt zur Speicherung Ihrer Sprachwahl ein technisch notwendiges Cookie
@@ -176,8 +169,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               </p>
             </section>
 
-            <section id="empfaenger" className="legal-section">
-              <span className="legal-index">06</span>
+            <section id="empfaenger" className="legal-section" {...reveal(0)}>
               <h2>Empfänger und Datensicherheit</h2>
               <p>
                 Personenbezogene Daten erhalten nur die Stellen, die sie für die beschriebenen Zwecke
@@ -191,8 +183,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               </p>
             </section>
 
-            <section id="rechte" className="legal-section">
-              <span className="legal-index">07</span>
+            <section id="rechte" className="legal-section" {...reveal(0)}>
               <h2>Ihre Rechte</h2>
               <p>
                 Sie haben nach Maßgabe der gesetzlichen Voraussetzungen das Recht auf Auskunft (Art. 15
@@ -202,7 +193,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               </p>
               <p>
                 Zur Ausübung Ihrer Rechte genügt eine Nachricht an{" "}
-                <a href="mailto:norman@sdxsolutions.de">norman@sdxsolutions.de</a>. Sie haben außerdem
+                <a href="mailto:contact@sdxsolutions.de">contact@sdxsolutions.de</a>. Sie haben außerdem
                 das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren. Für uns zuständig
                 ist:
               </p>

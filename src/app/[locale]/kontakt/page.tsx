@@ -4,8 +4,8 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { company } from "@/lib/site";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { reveal, revealFade } from "@/motion/reveal";
 
 export async function generateMetadata({
   params,
@@ -26,8 +26,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <main className="subpage">
       <header className="page-hero page-hero--compact">
-        <div className="container page-hero-inner">
-          <Eyebrow>{t.heroEyebrow}</Eyebrow>
+        <div className="container page-hero-inner" {...reveal(0)}>
           <h1>
             {t.heroTitleLine1}
             <br />
@@ -39,8 +38,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
       <section id="anfrage" className="section section--subpage">
         <div className="container contact-layout">
-          <aside className="contact-aside">
-            <Eyebrow>{t.asideEyebrow}</Eyebrow>
+          <aside className="contact-aside" {...revealFade(0)}>
             <a className="contact-email" href={`mailto:${company.email}`}>
               {company.email}
             </a>

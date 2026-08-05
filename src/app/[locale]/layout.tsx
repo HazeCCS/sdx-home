@@ -5,6 +5,10 @@ import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { MotionRoot } from "@/components/motion/MotionRoot";
+
+const revealBootstrap =
+  "document.documentElement.classList.add('js-reveal');window.__revealFallback=window.setTimeout(function(){document.documentElement.classList.add('reveal-fallback')},2500);";
 
 export const dynamicParams = false;
 
@@ -37,8 +41,9 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale);
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: revealBootstrap }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -48,7 +53,7 @@ export default async function LocaleLayout({
       </head>
       <body>
         <Navbar locale={locale} dict={dict} />
-        {children}
+        <MotionRoot>{children}</MotionRoot>
         <Footer locale={locale} dict={dict} />
       </body>
     </html>

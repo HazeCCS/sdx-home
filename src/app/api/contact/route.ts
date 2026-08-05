@@ -60,14 +60,14 @@ export async function POST(request: Request) {
   const smtpPassword = process.env.SMTP_PASS;
   const smtpHost = process.env.SMTP_HOST || "smtp.ionos.de";
   const smtpPort = Number(process.env.SMTP_PORT || 465);
-  const recipient = process.env.CONTACT_TO || "norman@sdxsolutions.de";
+  const recipient = process.env.CONTACT_TO || "contact@sdxsolutions.de";
 
   if (!smtpUser || !smtpPassword) {
     console.error("Contact form SMTP credentials are not configured.");
     return json(
       {
         message:
-          "Das Formular ist noch nicht vollständig eingerichtet. Bitte schreiben Sie direkt an norman@sdxsolutions.de.",
+          "Das Formular ist noch nicht vollständig eingerichtet. Bitte schreiben Sie direkt an contact@sdxsolutions.de.",
       },
       503,
     );
@@ -124,7 +124,7 @@ export async function POST(request: Request) {
     return json(
       {
         message:
-          "Die Anfrage konnte gerade nicht gesendet werden. Bitte schreiben Sie direkt an norman@sdxsolutions.de.",
+          "Die Anfrage konnte gerade nicht gesendet werden. Bitte schreiben Sie direkt an contact@sdxsolutions.de.",
       },
       502,
     );

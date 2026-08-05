@@ -4,8 +4,22 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ContactCta } from "@/components/ui/ContactCta";
+import { reveal } from "@/motion/reveal";
+
+function renderFactValue(value: string) {
+  const parts = value.split(/(\sund\s|\sand\s)/);
+  if (parts.length === 1) return value;
+  return parts.map((part, index) =>
+    /^\sund\s$|^\sand\s$/.test(part) ? (
+      <span className="fact-connector" key={index}>
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -25,8 +39,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <main className="subpage">
       <header className="page-hero">
-        <div className="container page-hero-inner">
-          <Eyebrow>{t.heroEyebrow}</Eyebrow>
+        <div className="container page-hero-inner" {...reveal(0)}>
           <h1>
             {t.heroTitleLine1}
             <br />
@@ -38,15 +51,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       <section className="section section--subpage">
         <div className="container about-layout">
-          <div className="about-lead">
-            <Eyebrow>{t.companyEyebrow}</Eyebrow>
+          <div className="about-lead" {...reveal(0)}>
             <h2>
               {t.companyTitleLine1}
               <br />
               <em>{t.companyTitleEm}</em>
             </h2>
           </div>
-          <div className="prose-block">
+          <div className="prose-block" {...reveal(1)}>
             {t.companyProse.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -54,10 +66,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
 
         <div className="container company-facts" role="list" aria-label={t.factsAria}>
-          {t.facts.map((fact) => (
-            <article role="listitem" key={fact.label}>
+          {t.facts.map((fact, index) => (
+            <article role="listitem" key={fact.label} {...reveal(index)}>
               <span>{fact.label}</span>
-              <strong>{fact.value}</strong>
+              <strong>{renderFactValue(fact.value)}</strong>
               <p>{fact.note}</p>
             </article>
           ))}
@@ -66,9 +78,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       <section className="section section--muted" aria-labelledby="work-title">
         <div className="container">
-          <header className="section-header">
+          <header className="section-header" {...reveal(0)}>
             <div>
-              <Eyebrow>{t.workEyebrow}</Eyebrow>
               <h2 id="work-title">
                 {t.workTitleLine1}
                 <br />
@@ -79,8 +90,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </header>
           <div className="service-list">
             {t.work.map((item, index) => (
-              <article key={item.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+              <article key={item.title} {...reveal(index)}>
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
@@ -92,7 +102,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       </section>
 
       <ContactCta
-        eyebrow={t.contactEyebrow}
         title={t.contactTitle}
         text={t.contactText}
         buttonLabel={t.contactButton}

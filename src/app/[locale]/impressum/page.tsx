@@ -4,8 +4,8 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { LegalNotice } from "@/components/legal/LegalNotice";
+import { reveal, revealFade } from "@/motion/reveal";
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,6 @@ export default async function ImprintPage({ params }: { params: Promise<{ locale
   if (locale !== "de") {
     return (
       <LegalNotice
-        eyebrow={dict.legalNotice.eyebrow}
         title={dict.legalNotice.imprintTitle}
         body={dict.legalNotice.body}
         viewGermanLabel={dict.legalNotice.viewGerman}
@@ -37,8 +36,7 @@ export default async function ImprintPage({ params }: { params: Promise<{ locale
   return (
     <main className="subpage">
       <header className="page-hero page-hero--legal">
-        <div className="container page-hero-inner">
-          <Eyebrow>Rechtliches</Eyebrow>
+        <div className="container page-hero-inner" {...reveal(0)}>
           <h1>Impressum</h1>
           <p>Anbieterkennzeichnung nach § 5 Digitale-Dienste-Gesetz (DDG).</p>
         </div>
@@ -46,7 +44,7 @@ export default async function ImprintPage({ params }: { params: Promise<{ locale
 
       <section className="section section--subpage">
         <div className="container legal-layout">
-          <aside className="legal-toc" aria-label="Inhalt">
+          <aside className="legal-toc" aria-label="Inhalt" {...revealFade(0)}>
             <span>Auf dieser Seite</span>
             <a href="#anbieter">Anbieter</a>
             <a href="#register">Registereintrag</a>
@@ -54,8 +52,7 @@ export default async function ImprintPage({ params }: { params: Promise<{ locale
             <a href="#streitbeilegung">Streitbeilegung</a>
           </aside>
           <div className="legal-content">
-            <section id="anbieter" className="legal-section">
-              <span className="legal-index">01</span>
+            <section id="anbieter" className="legal-section" {...reveal(0)}>
               <h2>Anbieter</h2>
               <address>
                 SDX Solutions UG (haftungsbeschränkt)
@@ -72,8 +69,7 @@ export default async function ImprintPage({ params }: { params: Promise<{ locale
                 <strong>Norman Tarayan</strong>
               </p>
             </section>
-            <section id="register" className="legal-section">
-              <span className="legal-index">02</span>
+            <section id="register" className="legal-section" {...reveal(0)}>
               <h2>Registereintrag</h2>
               <p>
                 Registergericht: Amtsgericht München
@@ -81,19 +77,17 @@ export default async function ImprintPage({ params }: { params: Promise<{ locale
                 Handelsregister: HRB 314880
               </p>
             </section>
-            <section id="kontakt" className="legal-section">
-              <span className="legal-index">03</span>
+            <section id="kontakt" className="legal-section" {...reveal(0)}>
               <h2>Kontakt</h2>
               <p>
-                E-Mail: <a href="mailto:norman@sdxsolutions.de">norman@sdxsolutions.de</a>
+                E-Mail: <a href="mailto:contact@sdxsolutions.de">contact@sdxsolutions.de</a>
               </p>
               <p>
                 Für Projektanfragen steht außerdem unser{" "}
                 <a href={href("de", "contact", "anfrage")}>Kontaktformular</a> zur Verfügung.
               </p>
             </section>
-            <section id="streitbeilegung" className="legal-section">
-              <span className="legal-index">04</span>
+            <section id="streitbeilegung" className="legal-section" {...reveal(0)}>
               <h2>Verbraucherstreitbeilegung</h2>
               <p>
                 Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer

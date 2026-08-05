@@ -4,9 +4,9 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { StoreLinks } from "@/components/ui/StoreLinks";
 import { ContactCta } from "@/components/ui/ContactCta";
+import { reveal, revealFade } from "@/motion/reveal";
 
 export async function generateMetadata({
   params,
@@ -28,8 +28,7 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
     <main className="subpage">
       <header className="page-hero product-detail-hero">
         <div className="container product-detail-grid">
-          <div className="page-hero-inner page-hero-inner--flush">
-            <Eyebrow>{t.heroEyebrow}</Eyebrow>
+          <div className="page-hero-inner page-hero-inner--flush" {...reveal(0)}>
             <h1>{t.heroTitle}</h1>
             <p>{t.heroParagraph}</p>
             <StoreLinks
@@ -45,15 +44,15 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
             className="product-shot product-shot--snusdex"
             role="img"
             aria-label={t.shotAlt}
+            {...revealFade(1)}
           />
         </div>
       </header>
 
       <section className="section section--subpage">
         <div className="container">
-          <header className="section-header">
+          <header className="section-header" {...reveal(0)}>
             <div>
-              <Eyebrow>{t.ideaEyebrow}</Eyebrow>
               <h2>
                 {t.ideaTitleLine1}
                 <br />
@@ -64,8 +63,7 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
           </header>
           <div className="feature-grid">
             {t.features.map((feature, index) => (
-              <article key={feature.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+              <article key={feature.title} {...reveal(index)}>
                 <h3>{feature.title}</h3>
                 <p>{feature.text}</p>
               </article>
@@ -76,15 +74,14 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
 
       <section className="section section--muted">
         <div className="container split-note">
-          <div>
-            <Eyebrow>{t.noteEyebrow}</Eyebrow>
+          <div {...reveal(0)}>
             <h2>
               {t.noteTitleLine1}
               <br />
               <em>{t.noteTitleEm}</em>
             </h2>
           </div>
-          <div className="prose-block">
+          <div className="prose-block" {...reveal(1)}>
             {t.noteProse.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -93,7 +90,6 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
       </section>
 
       <ContactCta
-        eyebrow={t.contactEyebrow}
         title={t.contactTitle}
         text={t.contactText}
         buttonLabel={t.contactButton}

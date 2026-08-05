@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { href, localizedPath, routes, type RouteKey } from "@/i18n/routing";
+import { menuTransition } from "@/motion/tokens";
 
 type NavbarProps = {
   locale: Locale;
@@ -102,7 +103,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.22, 1, 0.36, 1] }}
+            transition={reduceMotion ? { duration: 0 } : menuTransition}
             style={{ overflow: "hidden" }}
           >
             {mobileLinks.map((link) => (

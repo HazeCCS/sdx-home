@@ -130,16 +130,16 @@ export const de = {
     heroParagraph:
       "SDX Solutions UG (haftungsbeschränkt) entwickelt eigene digitale Produkte und realisiert Softwareprojekte für Unternehmen und Privatpersonen.",
     companyEyebrow: "Das Unternehmen",
-    companyTitleLine1: "Von Taufkirchen aus",
-    companyTitleEm: "digital gedacht.",
+    companyTitleLine1: "Für Ideen,",
+    companyTitleEm: "die bleiben.",
     companyProse: [
-      "Wir verbinden Produktentwicklung mit direkter IT-Dienstleistung. Eigene Apps wie Snusdex und FuelPilot geben uns täglich praktische Erfahrung mit Konzeption, Entwicklung, Veröffentlichung und laufendem Betrieb.",
-      "Diese Erfahrung bringen wir in Kundenprojekte ein – von einer klaren Unternehmenswebsite über ein internes Tool bis zur mobilen Anwendung oder einem individuellen Webservice.",
+      "Wir haben SDX Solutions gegründet, weil wir Software entwickeln wollten, auf die wir selbst stolz sind.",
+      "Aus eigenen Projekten entstand ein Unternehmen, das heute moderne Websites, individuelle Software und digitale Produkte für Unternehmen entwickelt.",
     ],
     factsAria: "Unternehmensdaten",
     facts: [
       { label: "Sitz", value: "Taufkirchen (Vils)", note: "Bayern, Deutschland" },
-      { label: "Geschäftsführung", value: "Norman Tarayan", note: "Direkter Ansprechpartner" },
+      { label: "Gründer", value: "Norman Tarayan und Moritz Wendt", note: "Direkte Ansprechpartner" },
       { label: "Fokus", value: "Software & IT", note: "Eigene Produkte und Auftragsentwicklung" },
     ],
     workEyebrow: "Was wir umsetzen",

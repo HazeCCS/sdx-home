@@ -133,16 +133,16 @@ export const en: Dictionary = {
     heroParagraph:
       "SDX Solutions UG (haftungsbeschränkt) builds its own digital products and delivers software projects for companies and individuals.",
     companyEyebrow: "The company",
-    companyTitleLine1: "Thought digitally,",
-    companyTitleEm: "from Taufkirchen.",
+    companyTitleLine1: "Built for ideas",
+    companyTitleEm: "that last.",
     companyProse: [
-      "We combine product development with hands-on IT services. Our own apps like Snusdex and FuelPilot give us daily, practical experience with concept, development, release and ongoing operation.",
-      "We bring that experience into client projects – from a clear corporate website through an internal tool to a mobile app or a custom web service.",
+      "We founded SDX Solutions because we wanted to build software we could truly be proud of.",
+      "What started as personal projects has grown into a company that develops modern websites, custom software, and digital products for businesses.",
     ],
     factsAria: "Company details",
     facts: [
       { label: "Location", value: "Taufkirchen (Vils)", note: "Bavaria, Germany" },
-      { label: "Management", value: "Norman Tarayan", note: "Your direct contact" },
+      { label: "Founders", value: "Norman Tarayan and Moritz Wendt", note: "Your direct contacts" },
       { label: "Focus", value: "Software & IT", note: "Own products and contract development" },
     ],
     workEyebrow: "What we deliver",

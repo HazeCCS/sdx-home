@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/i18n/dictionaries";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { reveal, revealFade } from "@/motion/reveal";
 
 export function Services({ dict }: { dict: Dictionary }) {
   const t = dict.services;
@@ -7,9 +7,8 @@ export function Services({ dict }: { dict: Dictionary }) {
   return (
     <section id="services" className="section" aria-labelledby="services-title">
       <div className="container">
-        <header className="section-header section-header--services">
+        <header className="section-header section-header--services" {...reveal(0)}>
           <div>
-            <Eyebrow>{t.eyebrow}</Eyebrow>
             <h2 id="services-title">
               {t.titleLine1}
               <br />
@@ -19,8 +18,7 @@ export function Services({ dict }: { dict: Dictionary }) {
           <p>{t.intro}</p>
         </header>
 
-        <div className="purpose-panel">
-          <span className="purpose-label">{t.purposeLabel}</span>
+        <div className="purpose-panel" {...revealFade(0)}>
           <p>{t.purposeText}</p>
           <span className="purpose-mark" aria-hidden="true">
             SDX
@@ -29,8 +27,7 @@ export function Services({ dict }: { dict: Dictionary }) {
 
         <div className="service-grid">
           {t.items.map((service, index) => (
-            <article key={service.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
+            <article key={service.title} {...reveal(index)}>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
             </article>
