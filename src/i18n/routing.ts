@@ -7,6 +7,7 @@ export const routes = {
   contact: "/kontakt",
   imprint: "/impressum",
   privacy: "/datenschutz",
+  snusdexPrivacy: "/datenschutz/snusdex",
 } as const;
 
 export type RouteKey = keyof typeof routes;

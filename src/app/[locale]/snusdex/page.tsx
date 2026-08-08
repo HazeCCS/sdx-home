@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -85,6 +86,13 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
             {t.noteProse.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            <p>
+              <Link href={href(locale, "snusdexPrivacy")}>
+                {locale === "de"
+                  ? "Datenschutzerklärung für die Snusdex-App"
+                  : "Privacy policy for the Snusdex app"}
+              </Link>
+            </p>
           </div>
         </div>
       </section>

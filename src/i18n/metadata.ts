@@ -2,7 +2,14 @@ import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
-type PageMetaKey = "home" | "about" | "snusdex" | "contact" | "imprint" | "privacy";
+type PageMetaKey =
+  | "home"
+  | "about"
+  | "snusdex"
+  | "contact"
+  | "imprint"
+  | "privacy"
+  | "snusdexPrivacy";
 
 const pathForKey: Record<PageMetaKey, string> = {
   home: "",
@@ -11,6 +18,7 @@ const pathForKey: Record<PageMetaKey, string> = {
   contact: "/kontakt",
   imprint: "/impressum",
   privacy: "/datenschutz",
+  snusdexPrivacy: "/datenschutz/snusdex",
 };
 
 export function createPageMetadata(locale: Locale, key: PageMetaKey): Metadata {

@@ -32,6 +32,11 @@ export const en: Dictionary = {
       description:
         "Privacy policy of SDX Solutions UG (haftungsbeschränkt). This document is available in German only, as required by law.",
     },
+    snusdexPrivacy: {
+      title: "Privacy policy for the Snusdex app — SDX Solutions",
+      description:
+        "Privacy policy of SDX Solutions UG (haftungsbeschränkt) for the Snusdex app, accounts, app features, consent choices and service providers.",
+    },
     ogTitle: "SDX Solutions UG (haftungsbeschränkt) — Digital Solutions",
     ogDescription:
       "Development, publishing and distribution of software, mobile applications and web services, plus IT services for companies.",
@@ -251,6 +256,7 @@ export const en: Dictionary = {
     legalGroup: "Legal",
     imprintLink: "Legal notice",
     privacyLink: "Privacy",
+    snusdexPrivacyLink: "Snusdex app privacy",
     directGroup: "Direct",
     copyright: "© 2026 SDX Solutions UG (haftungsbeschränkt)",
     strapline: "Development and distribution of digital products",

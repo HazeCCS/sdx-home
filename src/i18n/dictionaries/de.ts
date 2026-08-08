@@ -29,6 +29,11 @@ export const de = {
       description:
         "Datenschutzerklärung der SDX Solutions UG (haftungsbeschränkt) für Website, Kontaktformular, Hosting und Webfonts.",
     },
+    snusdexPrivacy: {
+      title: "Datenschutzerklärung für die Snusdex-App — SDX Solutions",
+      description:
+        "Datenschutzerklärung der SDX Solutions UG (haftungsbeschränkt) für die Snusdex-App, Konten, App-Funktionen, Einwilligungen und eingesetzte Dienstleister.",
+    },
     ogTitle: "SDX Solutions UG (haftungsbeschränkt) — Digitale Lösungen",
     ogDescription:
       "Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie IT-Dienstleistungen für Unternehmen.",
@@ -249,6 +254,7 @@ export const de = {
     legalGroup: "Rechtliches",
     imprintLink: "Impressum",
     privacyLink: "Datenschutz",
+    snusdexPrivacyLink: "Datenschutz Snusdex-App",
     directGroup: "Direkt",
     copyright: "© 2026 SDX Solutions UG (haftungsbeschränkt)",
     strapline: "Entwicklung und Vertrieb digitaler Produkte",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -39,8 +40,8 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
         <div className="container page-hero-inner" {...reveal(0)}>
           <h1>Datenschutz</h1>
           <p>
-            Informationen zur Verarbeitung personenbezogener Daten auf dieser Website. Stand: 3.
-            August 2026.
+            Informationen zur Verarbeitung personenbezogener Daten auf dieser Website. Für die
+            Snusdex-App gilt eine eigene, ergänzende Datenschutzerklärung. Stand: 8. August 2026.
           </p>
         </div>
       </header>
@@ -50,6 +51,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           <aside className="legal-toc" aria-label="Inhalt" {...revealFade(0)}>
             <span>Auf dieser Seite</span>
             <a href="#verantwortlicher">Verantwortlicher</a>
+            <a href="#snusdex-app">Snusdex-App</a>
             <a href="#hosting">Hosting</a>
             <a href="#kontaktformular">Kontakt</a>
             <a href="#fonts">Google Fonts</a>
@@ -72,6 +74,21 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                 Vertreten durch den Geschäftsführer Norman Tarayan
                 <br />
                 E-Mail: <a href="mailto:contact@sdxsolutions.de">contact@sdxsolutions.de</a>
+              </p>
+            </section>
+
+            <section id="snusdex-app" className="legal-section" {...reveal(0)}>
+              <h2>Datenschutz in der Snusdex-App</h2>
+              <p>
+                Die Snusdex-App verarbeitet insbesondere Konto-, Profil-, Sammlungs-, Bewertungs-,
+                Nutzungs-, Social- und – nur bei Aktivierung – MouTrack- und Push-Daten. Für diese
+                Datenverarbeitung, die eingesetzten App-Dienstleister, freiwillige Einwilligungen und
+                die Kontolöschung gilt unsere gesonderte App-Datenschutzerklärung.
+              </p>
+              <p>
+                <Link href={href("de", "snusdexPrivacy")}>
+                  Datenschutzerklärung für die Snusdex-App öffnen
+                </Link>
               </p>
             </section>
 
@@ -173,8 +190,9 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
               <h2>Empfänger und Datensicherheit</h2>
               <p>
                 Personenbezogene Daten erhalten nur die Stellen, die sie für die beschriebenen Zwecke
-                benötigen. Hierzu zählen insbesondere unsere Hosting- und E-Mail-Dienstleister. Eine
-                Weitergabe für Werbung oder ein Verkauf personenbezogener Daten findet nicht statt.
+                benötigen. Hierzu zählen insbesondere unsere Hosting- und E-Mail-Dienstleister.
+                Personenbezogene Daten werden nicht für fremde Werbung bereitgestellt und nicht zu
+                eigenständigen Zwecken an Dritte überlassen.
               </p>
               <p>
                 Die Website wird verschlüsselt über HTTPS übertragen. Wir setzen angemessene technische

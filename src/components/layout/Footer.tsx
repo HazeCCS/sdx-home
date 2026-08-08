@@ -31,6 +31,11 @@ export function Footer({ locale, dict }: FooterProps) {
       links: [
         { href: href(locale, "imprint"), label: dict.footer.imprintLink, external: false },
         { href: href(locale, "privacy"), label: dict.footer.privacyLink, external: false },
+        {
+          href: href(locale, "snusdexPrivacy"),
+          label: dict.footer.snusdexPrivacyLink,
+          external: false,
+        },
       ],
     },
     {
