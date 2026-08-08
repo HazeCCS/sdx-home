@@ -49,7 +49,7 @@ const copies: Record<Locale, PrivacyCopy> = {
         title: "2. Geltungsbereich und Kurzüberblick",
         paragraphs: [
           "Diese Erklärung gilt für die native Snusdex-iOS-App, die zugehörigen Schnittstellen, Datenbanken, Cloud-Funktionen und Speicherbereiche sowie Support-, Moderations-, Einwilligungs- und Kontolöschprozesse.",
-          "Snusdex ist ein Informations-, Sammlungs-, Bewertungs-, Statistik- und Community-Angebot für tabakfreie Nikotinbeutel. Die App verkauft selbst keine Nikotinprodukte und richtet sich ausschließlich an volljährige Nutzer.",
+          "Snusdex ist ein Informations-, Sammlungs-, Bewertungs-, Statistik- und Community-Angebot für tabakfreie Nikotinbeutel. Über die App können keine Nikotinprodukte erworben oder bestellt werden; sie richtet sich ausschließlich an volljährige Nutzer.",
           "Wir setzen in der App keine Werbe-SDKs ein und betreiben kein anbieterübergreifendes Werbetracking. Direkte Kennungen wie E-Mail-Adresse, Benutzername, Konto-ID, Authentifizierungs- oder Push-Token sowie MouTrack-Positionen werden nicht für Auswertungen mit externen Geschäftspartnern verwendet oder an diese offengelegt.",
         ],
       },
@@ -295,7 +295,7 @@ const copies: Record<Locale, PrivacyCopy> = {
         title: "2. Scope and overview",
         paragraphs: [
           "This policy applies to the native Snusdex iOS app, its APIs, databases, cloud functions and storage, and the related support, moderation, consent and account-deletion processes.",
-          "Snusdex is an information, collection, rating, statistics and community service for tobacco-free nicotine pouches. The app does not sell nicotine products and is intended only for adults.",
+          "Snusdex is an information, collection, rating, statistics and community service for tobacco-free nicotine pouches. Nicotine products cannot be purchased or ordered through the app, which is intended only for adults.",
           "We do not integrate advertising SDKs or perform cross-company advertising tracking in the app. Direct identifiers such as email address, username, account ID, authentication or push tokens, and MouTrack positions are not used for reports involving external business partners or disclosed to them.",
         ],
       },
