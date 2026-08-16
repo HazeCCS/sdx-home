@@ -3,6 +3,7 @@ node_modules/
 out/
 build/
 archive/
+cache/
 .env
 .env.local
 .vercel/
