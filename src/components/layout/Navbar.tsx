@@ -361,16 +361,16 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
       <AnimatePresence mode="wait" onExitComplete={() => emitMenuState(false)}>
         {open && (
-          <motion.div
-            className="menu-overlay"
-            id="main-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, transition: { delay: 0.55 } }}
-            transition={{ duration: reduce ? 0 : 0.1 }}
-          >
+          <div className="menu-overlay" id="main-menu">
             <motion.div
               className="menu-scrim"
+              initial={false}
+              exit={{ opacity: 0 }}
+              transition={{ duration: reduce ? 0 : 0.35 }}
+              aria-hidden="true"
+            />
+            <motion.div
+              className="menu-tint"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -500,7 +500,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                 </a>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </>
