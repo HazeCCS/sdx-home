@@ -263,7 +263,8 @@ export function Navbar({ locale, dict }: NavbarProps) {
     }
 
     restoreFocus.current = true;
-    visibleFocusables(overlayRef.current)[0]?.focus();
+    const firstItem = overlayRef.current?.querySelector<HTMLElement>(".menu-item");
+    (firstItem ?? visibleFocusables(overlayRef.current)[0])?.focus();
 
     const scrollable = (target: EventTarget | null) =>
       target instanceof Node && Boolean((target as Element).closest?.(".menu-list"));
@@ -386,46 +387,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
               aria-label={dict.nav.menuAria}
             >
               <motion.div
-                className="menu-main"
-                initial={{ x: reduce ? 0 : "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: reduce ? 0 : "100%" }}
-                transition={panelTransition}
-              >
-                <div className="menu-list">
-                  {items.map((item, index) => (
-                    <MenuItem
-                      key={item.key}
-                      href={href(locale, item.key)}
-                      eyebrow={item.eyebrow}
-                      title={item.title}
-                      index={index}
-                      current={isActive(item.key)}
-                      reduce={reduce}
-                      onNavigate={closeMenu}
-                    />
-                  ))}
-
-                  <motion.div
-                    className="menu-foot"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.4 }}
-                  >
-                    <Link
-                      className="menu-foot-cta"
-                      href={href(locale, "contact", "anfrage")}
-                      onClick={closeMenu}
-                    >
-                      {dict.nav.cta}
-                      <ArrowIcon size={14} />
-                    </Link>
-                    <span>{dict.footer.copyright}</span>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              <motion.div
                 className="menu-aside"
                 initial={{ x: reduce ? 0 : "-100%" }}
                 animate={{ x: 0 }}
@@ -475,6 +436,46 @@ export function Navbar({ locale, dict }: NavbarProps) {
                     </div>
                   </div>
                 </motion.div>
+              </motion.div>
+
+              <motion.div
+                className="menu-main"
+                initial={{ x: reduce ? 0 : "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: reduce ? 0 : "100%" }}
+                transition={panelTransition}
+              >
+                <div className="menu-list">
+                  {items.map((item, index) => (
+                    <MenuItem
+                      key={item.key}
+                      href={href(locale, item.key)}
+                      eyebrow={item.eyebrow}
+                      title={item.title}
+                      index={index}
+                      current={isActive(item.key)}
+                      reduce={reduce}
+                      onNavigate={closeMenu}
+                    />
+                  ))}
+
+                  <motion.div
+                    className="menu-foot"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.4 }}
+                  >
+                    <Link
+                      className="menu-foot-cta"
+                      href={href(locale, "contact", "anfrage")}
+                      onClick={closeMenu}
+                    >
+                      {dict.nav.cta}
+                      <ArrowIcon size={14} />
+                    </Link>
+                    <span>{dict.footer.copyright}</span>
+                  </motion.div>
+                </div>
               </motion.div>
 
               <motion.div
