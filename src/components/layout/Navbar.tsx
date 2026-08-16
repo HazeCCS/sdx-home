@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { company } from "@/lib/site";
 import { href, localizedPath, routes, type RouteKey } from "@/i18n/routing";
-import { easing } from "@/motion/tokens";
+import { easing, menuStateEvent } from "@/motion/tokens";
 
 type NavbarProps = {
   locale: Locale;
@@ -241,6 +241,14 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
   const closeMenu = useCallback(() => setOpen(false), []);
 
+  const emitMenuState = useCallback((value: boolean) => {
+    window.dispatchEvent(new CustomEvent(menuStateEvent, { detail: { open: value } }));
+  }, []);
+
+  useEffect(() => {
+    if (open) emitMenuState(true);
+  }, [open, emitMenuState]);
+
   useEffect(() => {
     closeMenu();
   }, [pathname, closeMenu]);
@@ -315,7 +323,11 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
   return (
     <>
-      <nav id="main-nav" aria-label={dict.nav.ariaLabel}>
+      <nav
+        id="main-nav"
+        className={open ? "is-menu-open" : undefined}
+        aria-label={dict.nav.ariaLabel}
+      >
         <div className="nav-inner">
           <Link href={localizedPath(locale)} className="nav-logo" aria-label={dict.nav.logoAria}>
             SDX <span>Solutions</span>
@@ -347,7 +359,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
         </div>
       </nav>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => emitMenuState(false)}>
         {open && (
           <motion.div
             className="menu-overlay"

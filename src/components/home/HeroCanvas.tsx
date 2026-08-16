@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { menuStateEvent } from "@/motion/tokens";
 
 export function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -67,24 +68,43 @@ export function HeroCanvas() {
       if (!reduceMotion) frame = requestAnimationFrame(draw);
     }
 
-    function onVisibilityChange() {
-      if (document.hidden && frame) {
+    let menuOpen = false;
+
+    function stop() {
+      if (frame) {
         cancelAnimationFrame(frame);
         frame = null;
-      } else if (!document.hidden && !frame && !reduceMotion) {
+      }
+    }
+
+    function start() {
+      if (!frame && !reduceMotion && !document.hidden && !menuOpen) {
         frame = requestAnimationFrame(draw);
       }
     }
 
+    function onVisibilityChange() {
+      if (document.hidden) stop();
+      else start();
+    }
+
+    function onMenuState(event: Event) {
+      menuOpen = Boolean((event as CustomEvent<{ open: boolean }>).detail?.open);
+      if (menuOpen) stop();
+      else start();
+    }
+
     window.addEventListener("resize", resizeCanvas, { passive: true });
+    window.addEventListener(menuStateEvent, onMenuState);
     document.addEventListener("visibilitychange", onVisibilityChange);
     resizeCanvas();
     frame = requestAnimationFrame(draw);
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener(menuStateEvent, onMenuState);
       document.removeEventListener("visibilitychange", onVisibilityChange);
-      if (frame) cancelAnimationFrame(frame);
+      stop();
     };
   }, []);
 

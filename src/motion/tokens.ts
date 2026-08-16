@@ -22,6 +22,8 @@ export const menuTransition: Transition = {
   ease: easing.out,
 };
 
+export const menuStateEvent = "sdx:menu-state";
+
 export const indicatorSpring: Transition = {
   type: "spring",
   stiffness: 320,

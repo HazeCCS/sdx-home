@@ -135,6 +135,10 @@
         pointer-events: none;
     }
 
+    #main-nav.is-menu-open {
+        mix-blend-mode: normal;
+    }
+
     .nav-inner {
         display: flex;
         align-items: center;
@@ -203,6 +207,7 @@
         background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
+        will-change: opacity;
     }
 
     .menu-panels {
@@ -216,6 +221,8 @@
 
     .menu-aside {
         display: none;
+        will-change: transform;
+        backface-visibility: hidden;
     }
 
     .menu-main {
@@ -225,6 +232,8 @@
         min-height: 0;
         flex-direction: column;
         background: #101010;
+        will-change: transform;
+        backface-visibility: hidden;
     }
 
     .menu-list {
