@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -14,6 +14,9 @@ type NavbarProps = {
   locale: Locale;
   dict: Dictionary;
 };
+
+const EASE = easing.inOut;
+const EXPO = easing.expo;
 
 const ArrowIcon = ({ size = 28 }: { size?: number }) => (
   <svg
@@ -91,10 +94,132 @@ const visibleFocusables = (root: HTMLElement | null) =>
       )
     : [];
 
+type MenuItemProps = {
+  href: string;
+  eyebrow: string;
+  title: string;
+  index: number;
+  current: boolean;
+  reduce: boolean;
+  onNavigate: () => void;
+};
+
+function MenuItem({ href: to, eyebrow, title, index, current, reduce, onNavigate }: MenuItemProps) {
+  const [lit, setLit] = useState(false);
+
+  const entrance = reduce
+    ? { duration: 0 }
+    : { duration: 0.55, delay: 0.25 + 0.07 * index, ease: EASE };
+
+  const tween = (duration: number, ease: typeof EXPO | "easeOut") =>
+    reduce ? { duration: 0 } : { duration, ease };
+
+  return (
+    <motion.div
+      className="menu-item-shell"
+      initial={{ y: 60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 30, opacity: 0 }}
+      transition={entrance}
+    >
+      <motion.div initial="rest" animate={lit ? "hover" : "rest"} variants={{}}>
+        <Link
+          className="menu-item"
+          href={to}
+          aria-current={current ? "page" : undefined}
+          onPointerEnter={(event) => {
+            if (event.pointerType === "mouse") setLit(true);
+          }}
+          onPointerLeave={() => setLit(false)}
+          onFocus={(event) => {
+            if (event.currentTarget.matches(":focus-visible")) setLit(true);
+          }}
+          onBlur={() => setLit(false)}
+          onClick={onNavigate}
+        >
+          <motion.span
+            className="menu-item-glow"
+            aria-hidden="true"
+            variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+            transition={tween(0.45, "easeOut")}
+          />
+          <motion.span
+            className="menu-item-bar"
+            aria-hidden="true"
+            variants={{
+              rest: { scaleY: current ? 1 : 0, opacity: current ? 0.45 : 1 },
+              hover: { scaleY: 1, opacity: 1 },
+            }}
+            transition={tween(0.5, EXPO)}
+          />
+          <motion.span
+            className="menu-item-rule"
+            aria-hidden="true"
+            variants={{ rest: { scaleX: 0 }, hover: { scaleX: 1 } }}
+            transition={tween(0.55, EXPO)}
+          />
+          <span className="menu-item-row">
+            <motion.span
+              className="menu-item-text"
+              variants={{ rest: { y: 0, x: 0 }, hover: { y: -4, x: 6 } }}
+              transition={tween(0.45, EXPO)}
+            >
+              <span className="menu-item-eyebrow">{eyebrow}</span>
+              <span className="menu-item-title">{title}</span>
+            </motion.span>
+            <motion.span
+              className="menu-item-arrow"
+              aria-hidden="true"
+              variants={{
+                rest: { opacity: 0, x: -8, y: 8 },
+                hover: { opacity: 1, x: 0, y: 0 },
+              }}
+              transition={tween(0.35, EXPO)}
+            >
+              <ArrowIcon />
+            </motion.span>
+          </span>
+        </Link>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+type AsideLinkProps = {
+  index: number;
+  reduce: boolean;
+  icon: ReactNode;
+  label: string;
+  children: (inner: ReactNode) => ReactNode;
+};
+
+function AsideLink({ index, reduce, icon, label, children }: AsideLinkProps) {
+  return (
+    <motion.div
+      className="menu-aside-row"
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={reduce ? { duration: 0 } : { delay: 0.65 + 0.06 * index, duration: 0.4 }}
+      whileHover={reduce ? undefined : { x: 4 }}
+    >
+      {children(
+        <>
+          {icon}
+          <span>{label}</span>
+          <span className="menu-aside-arrow">
+            <ArrowIcon size={11} />
+          </span>
+        </>,
+      )}
+    </motion.div>
+  );
+}
+
 export function Navbar({ locale, dict }: NavbarProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const reduce = Boolean(reduceMotion);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const restoreFocus = useRef(false);
@@ -106,7 +231,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
     { key: "contact", eyebrow: dict.nav.eyebrowContact, title: dict.nav.contact },
   ];
 
-  const legalLinks: { key: RouteKey; label: string; icon: React.ReactNode }[] = [
+  const legalLinks: { key: RouteKey; label: string; icon: ReactNode }[] = [
     { key: "imprint", label: dict.footer.imprintLink, icon: <DocIcon /> },
     { key: "privacy", label: dict.footer.privacyLink, icon: <ShieldIcon /> },
     { key: "snusdexPrivacy", label: dict.footer.snusdexPrivacyLink, icon: <ShieldIcon /> },
@@ -131,6 +256,22 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
     restoreFocus.current = true;
     visibleFocusables(overlayRef.current)[0]?.focus();
+
+    const scrollable = (target: EventTarget | null) =>
+      target instanceof Node && Boolean((target as Element).closest?.(".menu-list"));
+
+    const blockWheel = (event: Event) => {
+      if (!scrollable(event.target)) event.preventDefault();
+    };
+
+    const blockKeys = (event: KeyboardEvent) => {
+      if (
+        ["ArrowUp", "ArrowDown", "Space", "PageUp", "PageDown", "Home", "End"].includes(event.code) &&
+        !scrollable(event.target)
+      ) {
+        event.preventDefault();
+      }
+    };
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -157,28 +298,20 @@ export function Navbar({ locale, dict }: NavbarProps) {
       }
     };
 
+    window.addEventListener("wheel", blockWheel, { passive: false });
+    window.addEventListener("touchmove", blockWheel, { passive: false });
+    window.addEventListener("keydown", blockKeys);
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+
+    return () => {
+      window.removeEventListener("wheel", blockWheel);
+      window.removeEventListener("touchmove", blockWheel);
+      window.removeEventListener("keydown", blockKeys);
+      document.removeEventListener("keydown", onKey);
+    };
   }, [open, closeMenu]);
 
-  const ease = easing.out;
-  const panelTransition = reduceMotion
-    ? { duration: 0 }
-    : { duration: 0.62, ease };
-  const scrimTransition = reduceMotion ? { duration: 0 } : { duration: 0.4, ease };
-
-  const itemMotion = (index: number) =>
-    reduceMotion
-      ? { initial: false as const, animate: { opacity: 1, y: 0 }, exit: { opacity: 1 } }
-      : {
-          initial: { opacity: 0, y: 24 },
-          animate: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.5, ease, delay: 0.18 + index * 0.06 },
-          },
-          exit: { opacity: 0, transition: { duration: 0.16 } },
-        };
+  const panelTransition = reduce ? { duration: 0 } : { duration: 0.65, ease: EASE };
 
   return (
     <>
@@ -187,7 +320,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
           <Link href={localizedPath(locale)} className="nav-logo" aria-label={dict.nav.logoAria}>
             SDX <span>Solutions</span>
           </Link>
-          <button
+          <motion.button
             ref={toggleRef}
             className="nav-menu-toggle"
             type="button"
@@ -195,23 +328,41 @@ export function Navbar({ locale, dict }: NavbarProps) {
             aria-controls="main-menu"
             aria-label={open ? dict.nav.menuClose : dict.nav.menuOpen}
             onClick={() => setOpen((value) => !value)}
+            whileHover={reduce ? undefined : { scale: 1.1 }}
+            whileTap={reduce ? undefined : { scale: 0.9 }}
           >
-            <span />
-            <span />
-            <span />
-          </button>
+            <motion.span
+              animate={{ rotate: open ? 45 : 0, y: open ? 8 : 0 }}
+              transition={{ duration: reduce ? 0 : 0.3 }}
+            />
+            <motion.span
+              animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }}
+              transition={{ duration: reduce ? 0 : 0.2 }}
+            />
+            <motion.span
+              animate={{ rotate: open ? -45 : 0, y: open ? -8 : 0 }}
+              transition={{ duration: reduce ? 0 : 0.3 }}
+            />
+          </motion.button>
         </div>
       </nav>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {open && (
-          <div className="menu-overlay" id="main-menu">
+          <motion.div
+            className="menu-overlay"
+            id="main-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, transition: { delay: 0.55 } }}
+            transition={{ duration: reduce ? 0 : 0.1 }}
+          >
             <motion.div
               className="menu-scrim"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={scrimTransition}
+              transition={{ duration: reduce ? 0 : 0.35 }}
               onClick={closeMenu}
               aria-hidden="true"
             />
@@ -224,96 +375,101 @@ export function Navbar({ locale, dict }: NavbarProps) {
             >
               <motion.div
                 className="menu-main"
-                initial={{ x: reduceMotion ? 0 : "100%" }}
+                initial={{ x: reduce ? 0 : "100%" }}
                 animate={{ x: 0 }}
-                exit={{ x: reduceMotion ? 0 : "100%" }}
+                exit={{ x: reduce ? 0 : "100%" }}
                 transition={panelTransition}
               >
                 <div className="menu-list">
                   {items.map((item, index) => (
-                    <motion.div key={item.key} {...itemMotion(index)}>
-                      <Link
-                        className="menu-item"
-                        href={href(locale, item.key)}
-                        aria-current={isActive(item.key) ? "page" : undefined}
-                        onClick={closeMenu}
-                      >
-                        <span className="menu-item-glow" aria-hidden="true" />
-                        <span className="menu-item-bar" aria-hidden="true" />
-                        <span className="menu-item-rule" aria-hidden="true" />
-                        <span className="menu-item-row">
-                          <span className="menu-item-text">
-                            <span className="menu-item-eyebrow">{item.eyebrow}</span>
-                            <span className="menu-item-title">{item.title}</span>
-                          </span>
-                          <span className="menu-item-arrow">
-                            <ArrowIcon />
-                          </span>
-                        </span>
-                      </Link>
-                    </motion.div>
+                    <MenuItem
+                      key={item.key}
+                      href={href(locale, item.key)}
+                      eyebrow={item.eyebrow}
+                      title={item.title}
+                      index={index}
+                      current={isActive(item.key)}
+                      reduce={reduce}
+                      onNavigate={closeMenu}
+                    />
                   ))}
-                </div>
 
-                <motion.div
-                  className="menu-foot"
-                  initial={reduceMotion ? false : { opacity: 0 }}
-                  animate={{ opacity: 1, transition: { duration: 0.4, ease, delay: 0.5 } }}
-                  exit={{ opacity: 0, transition: { duration: 0.16 } }}
-                >
-                  <Link className="menu-foot-cta" href={href(locale, "contact", "anfrage")} onClick={closeMenu}>
-                    {dict.nav.cta}
-                    <ArrowIcon size={14} />
-                  </Link>
-                  <span>{dict.footer.copyright}</span>
-                </motion.div>
+                  <motion.div
+                    className="menu-foot"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.4 }}
+                  >
+                    <Link
+                      className="menu-foot-cta"
+                      href={href(locale, "contact", "anfrage")}
+                      onClick={closeMenu}
+                    >
+                      {dict.nav.cta}
+                      <ArrowIcon size={14} />
+                    </Link>
+                    <span>{dict.footer.copyright}</span>
+                  </motion.div>
+                </div>
               </motion.div>
 
               <motion.div
                 className="menu-aside"
-                initial={{ x: reduceMotion ? 0 : "-100%" }}
+                initial={{ x: reduce ? 0 : "-100%" }}
                 animate={{ x: 0 }}
-                exit={{ x: reduceMotion ? 0 : "-100%" }}
+                exit={{ x: reduce ? 0 : "-100%" }}
                 transition={panelTransition}
               >
-                <div className="menu-aside-group">
-                  <span className="menu-aside-label">{dict.footer.directGroup}</span>
-                  <div className="menu-aside-list">
-                    <a href={`mailto:${company.email}`}>
-                      <MailIcon />
-                      <span>{company.email}</span>
-                      <span className="menu-aside-arrow">
-                        <ArrowIcon size={11} />
-                      </span>
-                    </a>
-                  </div>
-                </div>
-                <div className="menu-aside-group">
-                  <span className="menu-aside-label">{dict.footer.legalGroup}</span>
-                  <div className="menu-aside-list">
-                    {legalLinks.map((link) => (
-                      <Link
-                        key={link.key}
-                        href={href(locale, link.key)}
-                        aria-current={isActive(link.key) ? "page" : undefined}
-                        onClick={closeMenu}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={reduce ? { duration: 0 } : { delay: 0.55, duration: 0.5 }}
+                >
+                  <div className="menu-aside-group">
+                    <span className="menu-aside-label">{dict.footer.directGroup}</span>
+                    <div className="menu-aside-list">
+                      <AsideLink
+                        index={0}
+                        reduce={reduce}
+                        icon={<MailIcon />}
+                        label={company.email}
                       >
-                        {link.icon}
-                        <span>{link.label}</span>
-                        <span className="menu-aside-arrow">
-                          <ArrowIcon size={11} />
-                        </span>
-                      </Link>
-                    ))}
+                        {(inner) => <a href={`mailto:${company.email}`}>{inner}</a>}
+                      </AsideLink>
+                    </div>
                   </div>
-                </div>
+                  <div className="menu-aside-group">
+                    <span className="menu-aside-label">{dict.footer.legalGroup}</span>
+                    <div className="menu-aside-list">
+                      {legalLinks.map((link, index) => (
+                        <AsideLink
+                          key={link.key}
+                          index={index + 1}
+                          reduce={reduce}
+                          icon={link.icon}
+                          label={link.label}
+                        >
+                          {(inner) => (
+                            <Link
+                              href={href(locale, link.key)}
+                              aria-current={isActive(link.key) ? "page" : undefined}
+                              onClick={closeMenu}
+                            >
+                              {inner}
+                            </Link>
+                          )}
+                        </AsideLink>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
               </motion.div>
 
               <motion.div
                 className="menu-mobile-links"
-                initial={reduceMotion ? false : { opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.4, ease, delay: 0.54 } }}
-                exit={{ opacity: 0, transition: { duration: 0.16 } }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.5 }}
               >
                 {legalLinks.map((link) => (
                   <Link
@@ -332,7 +488,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                 </a>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

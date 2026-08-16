@@ -3,6 +3,7 @@ import type { Transition } from "motion/react";
 export const easing = {
   out: [0.22, 1, 0.36, 1] as [number, number, number, number],
   inOut: [0.76, 0, 0.24, 1] as [number, number, number, number],
+  expo: [0.16, 1, 0.3, 1] as [number, number, number, number],
 };
 
 export const duration = {
