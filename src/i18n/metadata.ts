@@ -9,7 +9,9 @@ type PageMetaKey =
   | "contact"
   | "imprint"
   | "privacy"
-  | "snusdexPrivacy";
+  | "snusdexPrivacy"
+  | "driveRadarPrivacy"
+  | "driveRadarTerms";
 
 const pathForKey: Record<PageMetaKey, string> = {
   home: "",
@@ -19,6 +21,8 @@ const pathForKey: Record<PageMetaKey, string> = {
   imprint: "/impressum",
   privacy: "/datenschutz",
   snusdexPrivacy: "/datenschutz/snusdex",
+  driveRadarPrivacy: "/datenschutz/driveradar",
+  driveRadarTerms: "/nutzungsbedingungen/driveradar",
 };
 
 export function createPageMetadata(locale: Locale, key: PageMetaKey): Metadata {

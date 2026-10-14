@@ -36,6 +36,8 @@ export function Footer({ locale, dict }: FooterProps) {
           label: dict.footer.snusdexPrivacyLink,
           external: false,
         },
+        { href: href(locale, "driveRadarPrivacy"), label: dict.footer.driveRadarPrivacyLink, external: false },
+        { href: href(locale, "driveRadarTerms"), label: dict.footer.driveRadarTermsLink, external: false },
       ],
     },
     {

@@ -8,6 +8,8 @@ export const routes = {
   imprint: "/impressum",
   privacy: "/datenschutz",
   snusdexPrivacy: "/datenschutz/snusdex",
+  driveRadarPrivacy: "/datenschutz/driveradar",
+  driveRadarTerms: "/nutzungsbedingungen/driveradar",
 } as const;
 
 export type RouteKey = keyof typeof routes;

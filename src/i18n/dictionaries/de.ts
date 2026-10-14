@@ -34,6 +34,14 @@ export const de = {
       description:
         "Datenschutzerklärung der SDX Solutions UG (haftungsbeschränkt) für die Snusdex-App, Konten, App-Funktionen, Einwilligungen und eingesetzte Dienstleister.",
     },
+    driveRadarPrivacy: {
+      title: "Datenschutz in der DriveRadar-App — SDX Solutions",
+      description: "Datenschutzerklärung für DriveRadar: Standort, Tankstellenpreise, lokale Daten, Belegscanner und Abonnement.",
+    },
+    driveRadarTerms: {
+      title: "Nutzungsbedingungen für DriveRadar — SDX Solutions",
+      description: "Nutzungs- und Abonnementbedingungen für DriveRadar Free und DriveRadar+.",
+    },
     ogTitle: "SDX Solutions UG (haftungsbeschränkt) — Digitale Lösungen",
     ogDescription:
       "Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie IT-Dienstleistungen für Unternehmen.",
@@ -261,6 +269,8 @@ export const de = {
     imprintLink: "Impressum",
     privacyLink: "Datenschutz",
     snusdexPrivacyLink: "Datenschutz Snusdex-App",
+    driveRadarPrivacyLink: "Datenschutz DriveRadar-App",
+    driveRadarTermsLink: "Nutzungsbedingungen DriveRadar",
     directGroup: "Direkt",
     copyright: "© 2026 SDX Solutions UG (haftungsbeschränkt)",
     strapline: "Entwicklung und Vertrieb digitaler Produkte",

@@ -40,8 +40,8 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
         <div className="container page-hero-inner" {...reveal(0)}>
           <h1>Datenschutz</h1>
           <p>
-            Informationen zur Verarbeitung personenbezogener Daten auf dieser Website. Für die
-            Snusdex-App gilt eine eigene, ergänzende Datenschutzerklärung. Stand: 8. August 2026.
+            Informationen zur Verarbeitung personenbezogener Daten auf dieser Website. Für
+            Snusdex und DriveRadar gelten eigene App-Datenschutzerklärungen. Stand: 12. Oktober 2026.
           </p>
         </div>
       </header>
@@ -52,6 +52,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             <span>Auf dieser Seite</span>
             <a href="#verantwortlicher">Verantwortlicher</a>
             <a href="#snusdex-app">Snusdex-App</a>
+            <a href="#driveradar-app">DriveRadar-App</a>
             <a href="#hosting">Hosting</a>
             <a href="#kontaktformular">Kontakt</a>
             <a href="#fonts">Google Fonts</a>
@@ -90,6 +91,17 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                   Datenschutzerklärung für die Snusdex-App öffnen
                 </Link>
               </p>
+            </section>
+
+            <section id="driveradar-app" className="legal-section" {...reveal(0)}>
+              <h2>Datenschutz in der DriveRadar-App</h2>
+              <p>
+                DriveRadar verarbeitet für Tankstellen- und Routenabfragen Standort- beziehungsweise
+                Suchkoordinaten. Fahrzeug- und Tankdaten verbleiben derzeit lokal auf dem Gerät.
+                Einzelheiten zu App-Dienstleistern und dem optionalen Abonnement stehen in der
+                gesonderten Datenschutzerklärung.
+              </p>
+              <p><Link href={href("de", "driveRadarPrivacy")}>Datenschutzerklärung für DriveRadar öffnen</Link></p>
             </section>
 
             <section id="hosting" className="legal-section" {...reveal(0)}>

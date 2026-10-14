@@ -37,6 +37,14 @@ export const en: Dictionary = {
       description:
         "Privacy policy of SDX Solutions UG (haftungsbeschränkt) for the Snusdex app, accounts, app features, consent choices and service providers.",
     },
+    driveRadarPrivacy: {
+      title: "DriveRadar app privacy — SDX Solutions",
+      description: "Privacy information for the DriveRadar app. The legal text is available in German.",
+    },
+    driveRadarTerms: {
+      title: "DriveRadar terms of use — SDX Solutions",
+      description: "Terms of use and subscription information for DriveRadar. The legal text is available in German.",
+    },
     ogTitle: "SDX Solutions UG (haftungsbeschränkt) — Digital Solutions",
     ogDescription:
       "Development, publishing and distribution of software, mobile applications and web services, plus IT services for companies.",
@@ -263,6 +271,8 @@ export const en: Dictionary = {
     imprintLink: "Legal notice",
     privacyLink: "Privacy",
     snusdexPrivacyLink: "Snusdex app privacy",
+    driveRadarPrivacyLink: "DriveRadar app privacy",
+    driveRadarTermsLink: "DriveRadar terms",
     directGroup: "Direct",
     copyright: "© 2026 SDX Solutions UG (haftungsbeschränkt)",
     strapline: "Development and distribution of digital products",
