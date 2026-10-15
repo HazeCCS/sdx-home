@@ -50,7 +50,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       />
       <main>
         <Hero locale={locale} dict={dict} />
-        <Products dict={dict} />
+        <Products dict={dict} locale={locale} />
         <Services dict={dict} />
         <Process dict={dict} />
         <ContactCta

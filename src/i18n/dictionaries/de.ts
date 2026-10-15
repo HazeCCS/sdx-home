@@ -15,6 +15,10 @@ export const de = {
       description:
         "Snusdex ist die mobile Produktplattform für tabakfreie Nikotinbeutel: entdecken, vergleichen und den persönlichen Überblick behalten.",
     },
+    driveRadar: {
+      title: "DriveRadar — Tankpreise und Routenplanung | SDX Solutions",
+      description: "DriveRadar zeigt Tankstellenpreise auf der Karte, unterstützt die Ortssuche und ergänzt mit DriveRadar+ Preisprognosen und Routenplanung.",
+    },
     contact: {
       title: "Kontakt & Projektanfrage — SDX Solutions",
       description:
@@ -53,6 +57,8 @@ export const de = {
     home: "Startseite",
     about: "Über uns",
     snusdex: "Snusdex",
+    driveRadar: "DriveRadar",
+    eyebrowDriveRadar: "Unsere Mobilitäts-App",
     contact: "Kontakt",
     cta: "Projekt anfragen",
     menuOpen: "Menü öffnen",
@@ -91,10 +97,9 @@ export const de = {
     },
     fuelpilot: {
       type: "iOS Mobilitäts-App",
-      description:
-        "Ein fokussierter Begleiter für Autofahrer, der relevante Tankinformationen bündelt und Preis- sowie Fahrtentscheidungen vereinfacht.",
-      meta: ["Tankpreise", "Planung", "iOS"],
-      storeAria: "FuelPilot Download",
+      description: "Tankstellen in deiner Nähe finden, Preise vergleichen und mit DriveRadar+ die nächste Fahrt planen.",
+      meta: ["Tankpreise", "Karte", "DriveRadar+"],
+      storeAria: "DriveRadar Verfügbarkeit",
     },
   },
   services: {

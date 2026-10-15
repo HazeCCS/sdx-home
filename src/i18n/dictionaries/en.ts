@@ -17,6 +17,10 @@ export const en: Dictionary = {
       description:
         "Snusdex is the mobile product platform for tobacco-free nicotine pouches: discover, compare and keep your personal overview.",
     },
+    driveRadar: {
+      title: "DriveRadar — Fuel prices and route planning | SDX Solutions",
+      description: "DriveRadar shows nearby fuel prices on a map and offers place search, price forecasts and route planning with DriveRadar+.",
+    },
     contact: {
       title: "Contact & Project Enquiry — SDX Solutions",
       description:
@@ -56,6 +60,8 @@ export const en: Dictionary = {
     home: "Home",
     about: "About",
     snusdex: "Snusdex",
+    driveRadar: "DriveRadar",
+    eyebrowDriveRadar: "Our mobility app",
     contact: "Contact",
     cta: "Start a project",
     menuOpen: "Open menu",
@@ -94,10 +100,9 @@ export const en: Dictionary = {
     },
     fuelpilot: {
       type: "iOS mobility app",
-      description:
-        "A focused companion for drivers that brings relevant fuel information together and simplifies price and route decisions.",
-      meta: ["Fuel prices", "Planning", "iOS"],
-      storeAria: "FuelPilot download",
+      description: "Find nearby fuel stations, compare prices and plan your next trip with DriveRadar+.",
+      meta: ["Fuel prices", "Map", "DriveRadar+"],
+      storeAria: "DriveRadar availability",
     },
   },
   services: {

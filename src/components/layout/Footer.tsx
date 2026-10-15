@@ -23,7 +23,7 @@ export function Footer({ locale, dict }: FooterProps) {
       title: dict.footer.productsGroup,
       links: [
         { href: href(locale, "snusdex"), label: dict.footer.snusdexLink, external: false },
-        { href: `${localizedPath(locale)}#fuelpilot`, label: dict.footer.fuelpilotLink, external: false },
+        { href: href(locale, "driveRadar"), label: "DriveRadar", external: false },
       ],
     },
     {

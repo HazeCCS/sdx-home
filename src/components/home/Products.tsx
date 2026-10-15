@@ -1,8 +1,10 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { ProductCard, type Product } from "@/components/product/ProductCard";
 import { reveal } from "@/motion/reveal";
+import { href } from "@/i18n/routing";
+import type { Locale } from "@/i18n/config";
 
-export function Products({ dict }: { dict: Dictionary }) {
+export function Products({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const t = dict.products;
 
   const products: Product[] = [
@@ -20,18 +22,22 @@ export function Products({ dict }: { dict: Dictionary }) {
         { label: "iOS App Store", note: t.comingSoon },
         { label: "Google Play", note: t.comingSoon },
       ],
+      detailHref: href(locale, "snusdex"),
+      detailLabel: locale === "de" ? "Produkt ansehen" : "Explore product",
     },
     {
-      id: "fuelpilot",
-      variantClass: "product-card--soft product-card--fuelpilot",
+      id: "driveradar",
+      variantClass: "product-card--soft product-card--driveradar",
       index: "02",
       status: t.statusInDevelopment,
       type: t.fuelpilot.type,
-      name: "FuelPilot",
+      name: "DriveRadar",
       description: t.fuelpilot.description,
       meta: t.fuelpilot.meta,
       storeAriaLabel: t.fuelpilot.storeAria,
       stores: [{ label: "iOS App Store", note: t.comingSoon }],
+      detailHref: href(locale, "driveRadar"),
+      detailLabel: locale === "de" ? "Produkt ansehen" : "Explore product",
     },
   ];
 

@@ -228,6 +228,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
     { key: "home", eyebrow: dict.nav.eyebrowHome, title: dict.nav.home },
     { key: "about", eyebrow: dict.nav.eyebrowAbout, title: dict.nav.about },
     { key: "snusdex", eyebrow: dict.nav.eyebrowSnusdex, title: dict.nav.snusdex },
+    { key: "driveRadar", eyebrow: dict.nav.eyebrowDriveRadar, title: dict.nav.driveRadar },
     { key: "contact", eyebrow: dict.nav.eyebrowContact, title: dict.nav.contact },
   ];
 

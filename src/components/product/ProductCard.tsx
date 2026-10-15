@@ -1,4 +1,5 @@
 import { StoreLinks } from "@/components/ui/StoreLinks";
+import Link from "next/link";
 import { reveal } from "@/motion/reveal";
 
 export type Product = {
@@ -12,6 +13,8 @@ export type Product = {
   meta: string[];
   storeAriaLabel: string;
   stores: { label: string; note: string }[];
+  detailHref?: string;
+  detailLabel?: string;
 };
 
 export function ProductCard({ product, revealOrder = 0 }: { product: Product; revealOrder?: number }) {
@@ -34,6 +37,7 @@ export function ProductCard({ product, revealOrder = 0 }: { product: Product; re
         ))}
       </div>
       <StoreLinks items={product.stores} ariaLabel={product.storeAriaLabel} />
+      {product.detailHref && <Link className="product-detail-link" href={product.detailHref}>{product.detailLabel} <span aria-hidden="true">↗</span></Link>}
     </article>
   );
 }

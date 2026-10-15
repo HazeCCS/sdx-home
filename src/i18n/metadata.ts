@@ -6,6 +6,7 @@ type PageMetaKey =
   | "home"
   | "about"
   | "snusdex"
+  | "driveRadar"
   | "contact"
   | "imprint"
   | "privacy"
@@ -17,6 +18,7 @@ const pathForKey: Record<PageMetaKey, string> = {
   home: "",
   about: "/ueber-uns",
   snusdex: "/snusdex",
+  driveRadar: "/driveradar",
   contact: "/kontakt",
   imprint: "/impressum",
   privacy: "/datenschutz",
