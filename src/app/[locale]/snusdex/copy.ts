@@ -8,8 +8,9 @@ export type SnusdexCopy = {
   heroText: string;
   download: string;
   explore: string;
-  shotAlt: Record<"home" | "dex" | "social" | "stats" | "friends", string>;
+  shotAlt: Record<"home" | "dex" | "social" | "stats" | "friends" | "profile", string>;
   facts: { value: string; label: string }[];
+  countries: { value: string; label: string; title: string; note: string; items: { flag: string; name: string }[] };
   collect: { eyebrow: string; title: Heading; text: string; rarityLabel: string };
   review: { eyebrow: string; title: Heading; text: string; scoreLabel: string; dimensions: string[]; picksTitle: string; picksText: string };
   stats: { eyebrow: string; title: Heading; text: string; points: { title: string; text: string }[] };
@@ -17,7 +18,6 @@ export type SnusdexCopy = {
   badges: { eyebrow: string; title: Heading; text: string; progress: string };
   more: { eyebrow: string; title: Heading; items: { title: string; text: string }[] };
   partner: { eyebrow: string; title: Heading; text: string; points: { title: string; text: string }[]; cta: string };
-  news: { eyebrow: string; title: Heading; version: string; items: string[] };
   note: { title: Heading; paragraphs: string[]; privacy: string };
   end: { eyebrow: string; title: Heading; text: string; appStore: string; live: string; googlePlay: string; later: string; contact: string };
 };
@@ -36,6 +36,7 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
       social: "Social Tab mit Abzeichen, Creator's Pick und Community Picks mit Bewertungen nach Look, Smell, Taste, Bite, Drip und Power",
       stats: "Statistik mit Level, Tagesserie, Dex Fortschritt und Sammlungsverlauf",
       friends: "Freundesliste mit Anfragen, Freunden und gesendeten Anfragen",
+      profile: "Freundesprofil mit Collector ID, Seltenheiten und Vergleich mit der eigenen Sammlung",
     },
     facts: [
       { value: "Gratis", label: "Laden und loslegen" },
@@ -43,6 +44,28 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
       { value: "8", label: "Sprachen in der App" },
       { value: "18+", label: "Nur für Erwachsene" },
     ],
+    countries: {
+      value: "14",
+      label: "Länder verfügbar",
+      title: "Hier ist Snusdex verfügbar",
+      note: "Die Verfügbarkeit kann sich ändern.",
+      items: [
+        { flag: "🇩🇪", name: "Deutschland" },
+        { flag: "🇦🇹", name: "Österreich" },
+        { flag: "🇨🇭", name: "Schweiz" },
+        { flag: "🇩🇰", name: "Dänemark" },
+        { flag: "🇸🇪", name: "Schweden" },
+        { flag: "🇵🇱", name: "Polen" },
+        { flag: "🇨🇿", name: "Tschechische Republik" },
+        { flag: "🇮🇹", name: "Italien" },
+        { flag: "🇭🇷", name: "Kroatien" },
+        { flag: "🇲🇪", name: "Montenegro" },
+        { flag: "🇬🇷", name: "Griechenland" },
+        { flag: "🇮🇪", name: "Irland" },
+        { flag: "🇬🇧", name: "Vereinigtes Königreich" },
+        { flag: "🇺🇸", name: "USA" },
+      ],
+    },
     collect: {
       eyebrow: "Dex",
       title: { lead: "Sammle sie", em: "alle." },
@@ -105,17 +128,6 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
       ],
       cta: "Kooperation anfragen",
     },
-    news: {
-      eyebrow: "Neu",
-      title: { lead: "Das ist neu in", em: "Version 1.3." },
-      version: "1.3.0",
-      items: [
-        "Überarbeitete Statistik und anpassbare Collector Card.",
-        "Freunde ganz einfach: Anfrage senden, und nach der Annahme seid ihr Freunde. Freundesprofile zeigen Seltenheiten, Abzeichen und einen Vergleich mit deiner Sammlung.",
-        "Neue Level und ein Ranking.",
-        "Kleinere Korrekturen und Verbesserungen.",
-      ],
-    },
     note: {
       title: { lead: "Informationsprodukt,", em: "kein Onlineshop." },
       paragraphs: [
@@ -148,6 +160,7 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
       social: "Social tab with badges, Creator's Pick and Community Picks with ratings for Look, Smell, Taste, Bite, Drip and Power",
       stats: "Statistics with level, day streak, Dex progress and collection growth",
       friends: "Friends list with requests, friends and sent requests",
+      profile: "Friend profile with Collector ID, rarities and a comparison with your own collection",
     },
     facts: [
       { value: "Free", label: "Download and start" },
@@ -155,6 +168,28 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
       { value: "8", label: "Languages in the app" },
       { value: "18+", label: "Adults only" },
     ],
+    countries: {
+      value: "14",
+      label: "Countries available",
+      title: "Where Snusdex is available",
+      note: "Availability may change.",
+      items: [
+        { flag: "🇩🇪", name: "Germany" },
+        { flag: "🇦🇹", name: "Austria" },
+        { flag: "🇨🇭", name: "Switzerland" },
+        { flag: "🇩🇰", name: "Denmark" },
+        { flag: "🇸🇪", name: "Sweden" },
+        { flag: "🇵🇱", name: "Poland" },
+        { flag: "🇨🇿", name: "Czech Republic" },
+        { flag: "🇮🇹", name: "Italy" },
+        { flag: "🇭🇷", name: "Croatia" },
+        { flag: "🇲🇪", name: "Montenegro" },
+        { flag: "🇬🇷", name: "Greece" },
+        { flag: "🇮🇪", name: "Ireland" },
+        { flag: "🇬🇧", name: "United Kingdom" },
+        { flag: "🇺🇸", name: "United States" },
+      ],
+    },
     collect: {
       eyebrow: "Dex",
       title: { lead: "Collect it", em: "all of them." },
@@ -216,17 +251,6 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
         { title: "Community insights", text: "Anonymous insights at group level, never about individuals, and only based on voluntary consent." },
       ],
       cta: "Request a collaboration",
-    },
-    news: {
-      eyebrow: "New",
-      title: { lead: "New in", em: "version 1.3." },
-      version: "1.3.0",
-      items: [
-        "Redesigned statistics and collector card personalisation.",
-        "Friends made simple: send a request and you are friends once it is accepted. Friend profiles show rarities, badges and a comparison with your collection.",
-        "New levels and a ranking.",
-        "Smaller fixes and improvements.",
-      ],
     },
     note: {
       title: { lead: "Information product,", em: "not an online shop." },

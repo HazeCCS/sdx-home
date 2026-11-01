@@ -7,7 +7,7 @@ import { AnimatePresence, motion, useIsPresent, useReducedMotion } from "motion/
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { company } from "@/lib/site";
-import { href, localizedPath, routes, type RouteKey } from "@/i18n/routing";
+import { href, localizedPath, routes, stripLocaleFromPath, type RouteKey } from "@/i18n/routing";
 import { easing, mainThread } from "@/motion/tokens";
 
 type NavbarProps = {
@@ -224,6 +224,11 @@ function MenuScrim() {
   return <div className="menu-scrim" data-exiting={present ? undefined : ""} aria-hidden="true" />;
 }
 
+const productNames: Record<string, { id: string; name: string }> = {
+  [routes.snusdex]: { id: "snusdex", name: "Snusdex" },
+  [routes.driveRadar]: { id: "driveradar", name: "DriveRadar" },
+};
+
 export function Navbar({ locale, dict }: NavbarProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -246,6 +251,8 @@ export function Navbar({ locale, dict }: NavbarProps) {
     { key: "privacy", label: dict.footer.privacyLink, icon: <ShieldIcon /> },
     { key: "snusdexPrivacy", label: dict.footer.snusdexPrivacyLink, icon: <ShieldIcon /> },
   ];
+
+  const product = productNames[stripLocaleFromPath(pathname)];
 
   const isActive = (key: RouteKey) => pathname === localizedPath(locale, routes[key]);
 
@@ -332,9 +339,14 @@ export function Navbar({ locale, dict }: NavbarProps) {
         aria-label={dict.nav.ariaLabel}
       >
         <div className="nav-inner">
-          <Link href={localizedPath(locale)} className="nav-logo" aria-label={dict.nav.logoAria}>
-            SDX <span>Solutions</span>
-          </Link>
+          <div className="nav-brand">
+            <Link href={localizedPath(locale)} className="nav-logo" aria-label={dict.nav.logoAria}>
+              SDX <span>Solutions</span>
+            </Link>
+            {product && (
+              <span className={`nav-product nav-product--${product.id}`}>{product.name}</span>
+            )}
+          </div>
           <motion.button
             ref={toggleRef}
             className="nav-menu-toggle"

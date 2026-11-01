@@ -7,6 +7,7 @@ import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
 import { snusdexAppStoreUrl } from "@/lib/site";
 import { reveal, revealFade } from "@/motion/reveal";
+import { Facts } from "./Facts";
 import { snusdexCopy, type SnusdexCopy } from "./copy";
 
 export async function generateMetadata({
@@ -84,8 +85,7 @@ function Hero({ t }: { t: SnusdexCopy }) {
       <div className="sx-hero-grid" aria-hidden="true" />
       <div className="container sx-hero-inner">
         <div className="sx-hero-copy">
-          <span className="sx-kicker" {...reveal(0)}>
-            <span className="sx-kicker-dot" />
+          <span className="sx-eyebrow" {...reveal(0)}>
             {t.kicker}
           </span>
           <h1 {...reveal(1)}>
@@ -115,22 +115,12 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = snusdexCopy[locale];
-  const total = rarities.reduce((sum, item) => sum + item.weight, 0);
 
   return (
     <main className="sx-page">
       <Hero t={t} />
 
-      <section className="sx-facts" aria-label="Snusdex">
-        <div className="container sx-facts-grid">
-          {t.facts.map((fact, index) => (
-            <div key={fact.label} {...reveal(index)}>
-              <strong>{fact.value}</strong>
-              <span>{fact.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Facts facts={t.facts} countries={t.countries} />
 
       <section id="features" className="section sx-section">
         <div className="container sx-split">
@@ -218,8 +208,9 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
 
       <section className="section sx-section sx-section--raised">
         <div className="container sx-split sx-split--flip">
-          <div className="sx-stage" {...revealFade(1)}>
-            <Phone src="/snusdex/friends.webp" alt={t.shotAlt.friends} />
+          <div className="sx-pair" {...revealFade(1)}>
+            <Phone src="/snusdex/friends.webp" alt={t.shotAlt.friends} className="sx-pair-back" />
+            <Phone src="/snusdex/profile.webp" alt={t.shotAlt.profile} className="sx-pair-front" />
           </div>
           <div className="sx-copy" {...reveal(0)}>
             <span className="sx-eyebrow">{t.social.eyebrow}</span>
@@ -255,7 +246,7 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
 
       <section className="section sx-section">
         <div className="container">
-          <header className="sx-heading" {...reveal(0)}>
+          <header className="sx-heading sx-heading--center" {...reveal(0)}>
             <span className="sx-eyebrow">{t.more.eyebrow}</span>
             <h2>
               <Heading {...t.more.title} />
@@ -274,52 +265,36 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
       </section>
 
       <section className="section sx-section">
-        <div className="container sx-partner-grid">
-          <div className="sx-copy" {...reveal(0)}>
-            <span className="sx-eyebrow">{t.partner.eyebrow}</span>
-            <h2>
-              <Heading {...t.partner.title} />
-            </h2>
-            <p>{t.partner.text}</p>
-            <Link className="button button--primary" href={href(locale, "contact")}>
-              {t.partner.cta} <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-          <ol className="sx-points" {...reveal(1)}>
-            {t.partner.points.map((point, index) => (
-              <li key={point.title}>
-                <span>0{index + 1}</span>
-                <div>
+        <div className="container">
+          <div className="sx-partner" {...reveal(0)}>
+            <div className="sx-partner-copy">
+              <span className="sx-eyebrow">{t.partner.eyebrow}</span>
+              <h2>
+                <Heading {...t.partner.title} />
+              </h2>
+              <p>{t.partner.text}</p>
+              <Link className="button button--primary" href={href(locale, "contact")}>
+                {t.partner.cta} <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+            <ol className="sx-partner-cards">
+              {t.partner.points.map((point, index) => (
+                <li key={point.title}>
+                  <span>0{index + 1}</span>
                   <h3>{point.title}</h3>
                   <p>{point.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
-      <section className="section sx-section sx-section--raised">
-        <div className="container sx-news">
-          <header className="sx-heading" {...reveal(0)}>
-            <span className="sx-eyebrow">{t.news.eyebrow}</span>
-            <h2>
-              <Heading {...t.news.title} />
-            </h2>
-          </header>
-          <ul {...reveal(1)}>
-            {t.news.items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="section sx-section sx-note">
+      <section className="sx-note">
         <div className="container sx-note-grid">
-          <h2 {...reveal(0)}>
+          <h3 {...reveal(0)}>
             <Heading {...t.note.title} />
-          </h2>
+          </h3>
           <div {...reveal(1)}>
             {t.note.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
