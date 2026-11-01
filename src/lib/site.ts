@@ -8,3 +8,5 @@ export const company = {
   city: "Taufkirchen (Vils)",
   country: "DE",
 } as const;
+
+export const snusdexAppStoreUrl = "https://apps.apple.com/app/snusdex/id6799147967";
