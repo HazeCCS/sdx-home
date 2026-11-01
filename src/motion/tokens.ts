@@ -24,8 +24,6 @@ export const menuTransition: Transition = {
 
 export const mainThread = { onUpdate: () => undefined };
 
-export const menuStateEvent = "sdx:menu-state";
-
 export const indicatorSpring: Transition = {
   type: "spring",
   stiffness: 320,

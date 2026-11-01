@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { company } from "@/lib/site";
 import { href, localizedPath, routes, type RouteKey } from "@/i18n/routing";
-import { easing, mainThread, menuStateEvent } from "@/motion/tokens";
+import { easing, mainThread } from "@/motion/tokens";
 
 type NavbarProps = {
   locale: Locale;
@@ -251,14 +251,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
   const closeMenu = useCallback(() => setOpen(false), []);
 
-  const emitMenuState = useCallback((value: boolean) => {
-    window.dispatchEvent(new CustomEvent(menuStateEvent, { detail: { open: value } }));
-  }, []);
-
-  useEffect(() => {
-    if (open) emitMenuState(true);
-  }, [open, emitMenuState]);
-
   useEffect(() => {
     closeMenu();
   }, [pathname, closeMenu]);
@@ -371,7 +363,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
         </div>
       </nav>
 
-      <AnimatePresence mode="wait" onExitComplete={() => emitMenuState(false)}>
+      <AnimatePresence mode="wait">
         {open && (
           <div className="menu-overlay" id="main-menu">
             <MenuScrim />
