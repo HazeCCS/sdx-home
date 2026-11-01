@@ -166,7 +166,7 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
       <section className="section sx-section sx-section--raised">
         <div className="container sx-split sx-split--flip">
           <div className="sx-stage" {...revealFade(1)}>
-            <Phone src="/snusdex/reviews.webp" alt={t.shotAlt.reviews} />
+            <Phone src="/snusdex/social.webp" alt={t.shotAlt.social} />
           </div>
           <div className="sx-copy" {...reveal(0)}>
             <span className="sx-eyebrow">{t.review.eyebrow}</span>
@@ -218,9 +218,8 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
 
       <section className="section sx-section sx-section--raised">
         <div className="container sx-split sx-split--flip">
-          <div className="sx-stage sx-stage--pair" {...revealFade(1)}>
-            <Phone src="/snusdex/friend.webp" alt={t.shotAlt.friend} />
-            <Phone src="/snusdex/badges.webp" alt={t.shotAlt.badges} />
+          <div className="sx-stage" {...revealFade(1)}>
+            <Phone src="/snusdex/friends.webp" alt={t.shotAlt.friends} />
           </div>
           <div className="sx-copy" {...reveal(0)}>
             <span className="sx-eyebrow">{t.social.eyebrow}</span>
@@ -271,6 +270,32 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section sx-section">
+        <div className="container sx-partner-grid">
+          <div className="sx-copy" {...reveal(0)}>
+            <span className="sx-eyebrow">{t.partner.eyebrow}</span>
+            <h2>
+              <Heading {...t.partner.title} />
+            </h2>
+            <p>{t.partner.text}</p>
+            <Link className="button button--primary" href={href(locale, "contact")}>
+              {t.partner.cta} <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+          <ol className="sx-points" {...reveal(1)}>
+            {t.partner.points.map((point, index) => (
+              <li key={point.title}>
+                <span>0{index + 1}</span>
+                <div>
+                  <h3>{point.title}</h3>
+                  <p>{point.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

@@ -8,7 +8,7 @@ export type SnusdexCopy = {
   heroText: string;
   download: string;
   explore: string;
-  shotAlt: Record<"home" | "dex" | "reviews" | "stats" | "friend" | "badges", string>;
+  shotAlt: Record<"home" | "dex" | "social" | "stats" | "friends", string>;
   facts: { value: string; label: string }[];
   collect: { eyebrow: string; title: Heading; text: string; rarityLabel: string };
   review: { eyebrow: string; title: Heading; text: string; scoreLabel: string; dimensions: string[]; picksTitle: string; picksText: string };
@@ -16,6 +16,7 @@ export type SnusdexCopy = {
   social: { eyebrow: string; title: Heading; text: string; points: { title: string; text: string }[] };
   badges: { eyebrow: string; title: Heading; text: string; progress: string };
   more: { eyebrow: string; title: Heading; items: { title: string; text: string }[] };
+  partner: { eyebrow: string; title: Heading; text: string; points: { title: string; text: string }[]; cta: string };
   news: { eyebrow: string; title: Heading; version: string; items: string[] };
   note: { title: Heading; paragraphs: string[]; privacy: string };
   end: { eyebrow: string; title: Heading; text: string; appStore: string; live: string; googlePlay: string; later: string; contact: string };
@@ -32,10 +33,9 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
     shotAlt: {
       home: "Snusdex Startseite mit Collector ID, Tagesserie und Sammlungsstatistik",
       dex: "Der Snusdex Dex mit gesammelten und noch unbekannten Dosen",
-      reviews: "Community Picks mit Bewertungen nach Look, Smell, Taste, Bite, Drip und Power",
+      social: "Social Tab mit Abzeichen, Creator's Pick und Community Picks mit Bewertungen nach Look, Smell, Taste, Bite, Drip und Power",
       stats: "Statistik mit Level, Tagesserie, Dex Fortschritt und Sammlungsverlauf",
-      friend: "Freundesprofil mit Collector ID, Seltenheiten und Vergleich mit der eigenen Sammlung",
-      badges: "Abzeichen Übersicht mit freigeschalteten Sammler Leveln",
+      friends: "Freundesliste mit Anfragen, Freunden und gesendeten Anfragen",
     },
     facts: [
       { value: "Gratis", label: "Laden und loslegen" },
@@ -95,6 +95,16 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
         { title: "Acht Sprachen", text: "Deutsch, Englisch, Spanisch, Französisch, Italienisch, Niederländisch, Polnisch und Russisch." },
       ],
     },
+    partner: {
+      eyebrow: "Für Partner",
+      title: { lead: "Du bist Marke oder", em: "Händler?" },
+      text: "Snusdex zeigt, was Sammler wirklich begeistert. Wenn du mit uns zusammenarbeiten oder mehr über die Erkenntnisse aus der Community erfahren möchtest, sprich uns an.",
+      points: [
+        { title: "Kooperationen", text: "Gemeinsame Ideen für Hersteller, Marken und Händler rund um Snusdex." },
+        { title: "Community Insights", text: "Anonyme Erkenntnisse auf Gruppenebene, nie auf Einzelpersonen, und nur auf Basis freiwilliger Einwilligung." },
+      ],
+      cta: "Kooperation anfragen",
+    },
     news: {
       eyebrow: "Neu",
       title: { lead: "Das ist neu in", em: "Version 1.3." },
@@ -135,10 +145,9 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
     shotAlt: {
       home: "Snusdex home screen with Collector ID, day streak and collection stats",
       dex: "The Snusdex Dex with collected and still unknown cans",
-      reviews: "Community Picks with ratings for Look, Smell, Taste, Bite, Drip and Power",
+      social: "Social tab with badges, Creator's Pick and Community Picks with ratings for Look, Smell, Taste, Bite, Drip and Power",
       stats: "Statistics with level, day streak, Dex progress and collection growth",
-      friend: "Friend profile with Collector ID, rarities and a comparison with your own collection",
-      badges: "Badges overview with unlocked collector levels",
+      friends: "Friends list with requests, friends and sent requests",
     },
     facts: [
       { value: "Free", label: "Download and start" },
@@ -197,6 +206,16 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
         { title: "Product photos", text: "Suggest missing products and images and help shape the database." },
         { title: "Eight languages", text: "German, English, Spanish, French, Italian, Dutch, Polish and Russian." },
       ],
+    },
+    partner: {
+      eyebrow: "For partners",
+      title: { lead: "A brand or", em: "retailer?" },
+      text: "Snusdex shows what collectors really love. If you want to work with us or learn more about insights from the community, get in touch.",
+      points: [
+        { title: "Collaborations", text: "Shared ideas for manufacturers, brands and retailers around Snusdex." },
+        { title: "Community insights", text: "Anonymous insights at group level, never about individuals, and only based on voluntary consent." },
+      ],
+      cta: "Request a collaboration",
     },
     news: {
       eyebrow: "New",

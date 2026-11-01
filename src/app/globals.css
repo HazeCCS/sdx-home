@@ -2325,10 +2325,12 @@
 
 .sx-phone {
     overflow: hidden;
-    border: 6px solid #1c1c1f;
-    border-radius: 52px;
+    border-radius: 14.1% / 6.5%;
     background: #000;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .16);
+    box-shadow:
+        0 0 0 6px #121214,
+        0 0 0 7px rgba(255, 255, 255, .22),
+        0 40px 100px rgba(0, 0, 0, .6);
 }
 
 .sx-phone img {
@@ -2446,27 +2448,6 @@
 .sx-stage .sx-phone {
     position: relative;
     width: min(100%, 340px);
-}
-
-.sx-stage--pair {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0 60px;
-}
-
-.sx-stage--pair .sx-phone {
-    width: min(52%, 290px);
-}
-
-.sx-stage--pair .sx-phone:first-child {
-    z-index: 2;
-    transform: rotate(-4deg);
-    margin-right: -4%;
-}
-
-.sx-stage--pair .sx-phone:last-child {
-    margin-top: 12%;
-    transform: rotate(4deg);
 }
 
 .sx-rarity {
@@ -2790,14 +2771,28 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 20px 4px;
+    padding: 20px 16px;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: -.02em;
 }
 
-.sx-stores li > a:hover {
-    color: var(--sx-red);
+.sx-stores li > a {
+    transition: background-color 220ms ease;
+}
+
+.sx-stores li > a > span {
+    transition: transform 320ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.sx-stores li > a:hover,
+.sx-stores li > a:focus-visible {
+    background: rgba(255, 255, 255, .06);
+}
+
+.sx-stores li > a:hover > span,
+.sx-stores li > a:focus-visible > span {
+    transform: translateX(6px);
 }
 
 .sx-stores b {
@@ -2888,8 +2883,10 @@
     }
 
     .sx-phone {
-        border-width: 5px;
-        border-radius: 38px;
+        box-shadow:
+            0 0 0 4px #121214,
+            0 0 0 5px rgba(255, 255, 255, .22),
+            0 30px 70px rgba(0, 0, 0, .6);
     }
 
     .sx-dimensions {
@@ -2909,11 +2906,29 @@
         margin-top: 24px;
     }
 
-    .sx-stage--pair .sx-phone {
-        width: 56%;
-    }
-
     .sx-badge-card {
         padding: 24px;
+    }
+}
+
+.sx-partner-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(48px, 8vw, 130px);
+    align-items: start;
+}
+
+.sx-partner-grid .sx-copy > p {
+    max-width: 520px;
+}
+
+.sx-partner-grid .button {
+    margin-top: 34px;
+}
+
+@media (max-width: 980px) {
+    .sx-partner-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 48px;
     }
 }
