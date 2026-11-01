@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { AnimatePresence, motion, useIsPresent, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { company } from "@/lib/site";
@@ -219,11 +219,6 @@ function AsideLink({ index, reduce, icon, label, children }: AsideLinkProps) {
   );
 }
 
-function MenuScrim() {
-  const present = useIsPresent();
-  return <div className="menu-scrim" data-exiting={present ? undefined : ""} aria-hidden="true" />;
-}
-
 const productNames: Record<string, { id: string; name: string }> = {
   [routes.snusdex]: { id: "snusdex", name: "Snusdex" },
   [routes.driveRadar]: { id: "driveradar", name: "DriveRadar" },
@@ -387,7 +382,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
       <AnimatePresence mode="wait">
         {open && (
           <div className="menu-overlay" id="main-menu">
-            <MenuScrim />
             <motion.div
               className="menu-tint"
               initial={{ opacity: 0 }}
@@ -495,33 +489,23 @@ export function Navbar({ locale, dict }: NavbarProps) {
                       <ArrowIcon size={14} />
                     </Link>
                     <span>{dict.footer.copyright}</span>
+                    <div className="menu-foot-links">
+                      {legalLinks.map((link) => (
+                        <Link
+                          key={link.key}
+                          href={href(locale, link.key)}
+                          aria-current={isActive(link.key) ? "page" : undefined}
+                          onClick={closeMenu}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                      <a href={`mailto:${company.email}`}>{company.email}</a>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
 
-              <motion.div
-                className="menu-mobile-links"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.5 }}
-                {...mainThread}
-              >
-                {legalLinks.map((link) => (
-                  <Link
-                    key={link.key}
-                    href={href(locale, link.key)}
-                    aria-current={isActive(link.key) ? "page" : undefined}
-                    onClick={closeMenu}
-                  >
-                    {link.icon}
-                    {link.label}
-                  </Link>
-                ))}
-                <a href={`mailto:${company.email}`}>
-                  <MailIcon />
-                  {company.email}
-                </a>
-              </motion.div>
             </div>
           </div>
         )}
