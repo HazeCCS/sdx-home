@@ -144,8 +144,8 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
           answer: "Jede gescannte Dose bekommt ihren Platz im Dex. Neue Sorten schalten sich frei und sind in sieben Seltenheitsstufen von Common bis Mythic eingeteilt.",
         },
         {
-          question: "Kann ich mit Snusdex Nicotine Pouches kaufen?",
-          answer: "Nein. Snusdex ist ein Informationsprodukt und kein Onlineshop. Die App dient der Information und der persönlichen Organisation deiner Sammlung.",
+          question: "Kann ich über Snusdex Nicotine Pouches kaufen?",
+          answer: "Snusdex ist selbst kein Onlineshop. Über die App gelangst du aber direkt zu unseren Partnershops und kannst dort Nicotine Pouches bestellen.",
         },
         {
           question: "In welchen Ländern ist Snusdex verfügbar?",
@@ -306,8 +306,8 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
           answer: "Every can you scan gets its place in the Dex. New varieties unlock and are grouped into seven rarity tiers from Common to Mythic.",
         },
         {
-          question: "Can I buy nicotine pouches with Snusdex?",
-          answer: "No. Snusdex is an information product, not an online shop. The app is for information and for organising your personal collection.",
+          question: "Can I buy nicotine pouches through Snusdex?",
+          answer: "Snusdex is not an online shop itself. The app takes you straight to our partner shops, where you can order nicotine pouches.",
         },
         {
           question: "In which countries is Snusdex available?",
