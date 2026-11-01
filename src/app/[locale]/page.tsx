@@ -4,7 +4,7 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
-import { company } from "@/lib/site";
+import { company, siteUrl } from "@/lib/site";
 import { Hero } from "@/components/home/Hero";
 import { Products } from "@/components/home/Products";
 import { Services } from "@/components/home/Services";
@@ -30,6 +30,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     "@context": "https://schema.org",
     "@type": "Organization",
     name: company.name,
+    url: siteUrl,
+    logo: `${siteUrl}/snusdex/icon.webp`,
     description: dict.structuredData.description,
     email: company.email,
     address: {

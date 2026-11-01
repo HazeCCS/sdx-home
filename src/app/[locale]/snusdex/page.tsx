@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { createPageMetadata } from "@/i18n/metadata";
 import { href } from "@/i18n/routing";
-import { snusdexAppStoreUrl } from "@/lib/site";
+import { company, siteUrl, snusdexAppStoreUrl } from "@/lib/site";
 import { reveal, revealFade } from "@/motion/reveal";
 import { Facts } from "./Facts";
 import { snusdexCopy, type SnusdexCopy } from "./copy";
@@ -89,6 +90,7 @@ function Hero({ t }: { t: SnusdexCopy }) {
             {t.kicker}
           </span>
           <h1 {...reveal(1)}>
+            <span className="sr-only">Snusdex: </span>
             <span>{t.heroLines[0]}</span>
             <em>{t.heroLines[1]}</em>
             <span>{t.heroLines[2]}</span>
@@ -115,9 +117,46 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = snusdexCopy[locale];
+  const dict = getDictionary(locale);
+  const pageUrl = `${siteUrl}/${locale}/snusdex`;
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      name: "Snusdex",
+      url: pageUrl,
+      description: dict.meta.snusdex.description,
+      applicationCategory: "LifestyleApplication",
+      operatingSystem: "iOS 18.0",
+      inLanguage: locale,
+      image: `${siteUrl}/snusdex/icon.webp`,
+      screenshot: ["dex", "home", "stats", "social", "friends", "profile"].map(
+        (name) => `${siteUrl}/snusdex/${name}.webp`,
+      ),
+      downloadUrl: snusdexAppStoreUrl,
+      installUrl: snusdexAppStoreUrl,
+      typicalAgeRange: "18-",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+      author: { "@type": "Organization", name: company.name, url: siteUrl },
+      publisher: { "@type": "Organization", name: company.name, url: siteUrl },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "SDX Solutions", item: `${siteUrl}/${locale}` },
+        { "@type": "ListItem", position: 2, name: "Snusdex", item: pageUrl },
+      ],
+    },
+  ];
 
   return (
     <main className="sx-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Hero t={t} />
 
       <Facts facts={t.facts} countries={t.countries} />
