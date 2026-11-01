@@ -17,6 +17,7 @@ export type SnusdexCopy = {
   social: { eyebrow: string; title: Heading; text: string; points: { title: string; text: string }[] };
   badges: { eyebrow: string; title: Heading; text: string; progress: string };
   more: { eyebrow: string; title: Heading; items: { title: string; text: string }[] };
+  faq: { eyebrow: string; title: Heading; items: { question: string; answer: string }[] };
   partner: { eyebrow: string; title: Heading; text: string; points: { title: string; text: string }[]; cta: string };
   note: { title: Heading; paragraphs: string[]; privacy: string };
   end: { eyebrow: string; title: Heading; text: string; appStore: string; live: string; googlePlay: string; later: string; contact: string };
@@ -116,6 +117,44 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
         { title: "Dosen im Blick", text: "Offene und leere Dosen verwalten und Verbrauch im Überblick behalten." },
         { title: "Produktfotos", text: "Fehlende Produkte und Bilder vorschlagen und die Datenbank mitgestalten." },
         { title: "Acht Sprachen", text: "Deutsch, Englisch, Spanisch, Französisch, Italienisch, Niederländisch, Polnisch und Russisch." },
+      ],
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: { lead: "Häufige", em: "Fragen." },
+      items: [
+        {
+          question: "Was ist Snusdex?",
+          answer: "Snusdex ist eine iPhone App für Nicotine Pouches. Du scannst Dosen, bewertest Produkte, baust deine Sammlung im Dex auf und vergleichst dich mit Freunden.",
+        },
+        {
+          question: "Ist Snusdex kostenlos?",
+          answer: "Ja, du kannst Snusdex kostenlos im App Store laden und sofort mit deiner Sammlung starten.",
+        },
+        {
+          question: "Für welche Geräte gibt es Snusdex?",
+          answer: "Snusdex läuft auf dem iPhone mit iOS 18 oder neuer. Eine Version für Android ist für später in diesem Jahr geplant.",
+        },
+        {
+          question: "Wie bewerte ich Nicotine Pouches in der App?",
+          answer: "Jedes Produkt bewertest du nach sechs Kriterien: Look, Smell, Taste, Bite, Drip und Power. So erinnerst du dich später genau, was dir gefallen hat.",
+        },
+        {
+          question: "Wie funktioniert der Dex?",
+          answer: "Jede gescannte Dose bekommt ihren Platz im Dex. Neue Sorten schalten sich frei und sind in sieben Seltenheitsstufen von Common bis Mythic eingeteilt.",
+        },
+        {
+          question: "Kann ich mit Snusdex Nicotine Pouches kaufen?",
+          answer: "Nein. Snusdex ist ein Informationsprodukt und kein Onlineshop. Die App dient der Information und der persönlichen Organisation deiner Sammlung.",
+        },
+        {
+          question: "In welchen Ländern ist Snusdex verfügbar?",
+          answer: "Snusdex ist in Deutschland, Österreich, der Schweiz, Dänemark, Schweden, Polen, Tschechien, Italien, Kroatien, Montenegro, Griechenland, Irland, im Vereinigten Königreich und in den USA verfügbar. Die Verfügbarkeit kann sich ändern.",
+        },
+        {
+          question: "Ab welchem Alter darf ich Snusdex nutzen?",
+          answer: "Snusdex richtet sich ausschließlich an Erwachsene ab 18 Jahren. Nikotin macht abhängig, und die App ersetzt keine medizinische oder gesundheitliche Beratung.",
+        },
       ],
     },
     partner: {
@@ -240,6 +279,44 @@ export const snusdexCopy: Record<Locale, SnusdexCopy> = {
         { title: "Cans at a glance", text: "Manage open and finished cans and keep track of your usage." },
         { title: "Product photos", text: "Suggest missing products and images and help shape the database." },
         { title: "Eight languages", text: "German, English, Spanish, French, Italian, Dutch, Polish and Russian." },
+      ],
+    },
+    faq: {
+      eyebrow: "FAQ",
+      title: { lead: "Frequently asked", em: "questions." },
+      items: [
+        {
+          question: "What is Snusdex?",
+          answer: "Snusdex is an iPhone app for nicotine pouches. You scan cans, review products, build your collection in the Dex and compare with friends.",
+        },
+        {
+          question: "Is Snusdex free?",
+          answer: "Yes, you can download Snusdex for free on the App Store and start your collection right away.",
+        },
+        {
+          question: "Which devices does Snusdex run on?",
+          answer: "Snusdex runs on iPhone with iOS 18 or later. An Android version is planned for later this year.",
+        },
+        {
+          question: "How do I review nicotine pouches in the app?",
+          answer: "You rate every product on six criteria: Look, Smell, Taste, Bite, Drip and Power. That way you remember exactly what you liked and what you did not.",
+        },
+        {
+          question: "How does the Dex work?",
+          answer: "Every can you scan gets its place in the Dex. New varieties unlock and are grouped into seven rarity tiers from Common to Mythic.",
+        },
+        {
+          question: "Can I buy nicotine pouches with Snusdex?",
+          answer: "No. Snusdex is an information product, not an online shop. The app is for information and for organising your personal collection.",
+        },
+        {
+          question: "In which countries is Snusdex available?",
+          answer: "Snusdex is available in Germany, Austria, Switzerland, Denmark, Sweden, Poland, the Czech Republic, Italy, Croatia, Montenegro, Greece, Ireland, the United Kingdom and the USA. Availability may change.",
+        },
+        {
+          question: "How old do I have to be to use Snusdex?",
+          answer: "Snusdex is intended for adults aged 18 and over only. Nicotine is addictive, and the app is not medical or health advice.",
+        },
       ],
     },
     partner: {

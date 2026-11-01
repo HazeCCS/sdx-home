@@ -143,6 +143,16 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
     },
     {
       "@context": "https://schema.org",
+      "@type": "FAQPage",
+      inLanguage: locale,
+      mainEntity: t.faq.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "SDX Solutions", item: `${siteUrl}/${locale}` },
@@ -298,6 +308,25 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section sx-section" aria-labelledby="faq-title">
+        <div className="container sx-faq">
+          <header className="sx-heading sx-heading--center" {...reveal(0)}>
+            <span className="sx-eyebrow">{t.faq.eyebrow}</span>
+            <h2 id="faq-title">
+              <Heading {...t.faq.title} />
+            </h2>
+          </header>
+          <div className="sx-faq-list" {...reveal(1)}>
+            {t.faq.items.map((item) => (
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
             ))}
           </div>
         </div>
