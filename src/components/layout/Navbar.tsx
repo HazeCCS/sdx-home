@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useIsPresent, useReducedMotion } from "motion/react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { company } from "@/lib/site";
 import { href, localizedPath, routes, type RouteKey } from "@/i18n/routing";
-import { easing, menuStateEvent } from "@/motion/tokens";
+import { easing, mainThread, menuStateEvent } from "@/motion/tokens";
 
 type NavbarProps = {
   locale: Locale;
@@ -121,6 +121,7 @@ function MenuItem({ href: to, eyebrow, title, index, current, reduce, onNavigate
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 30, opacity: 0 }}
       transition={entrance}
+      {...mainThread}
     >
       <motion.div initial="rest" animate={lit ? "hover" : "rest"} variants={{}}>
         <Link
@@ -142,6 +143,7 @@ function MenuItem({ href: to, eyebrow, title, index, current, reduce, onNavigate
             aria-hidden="true"
             variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
             transition={tween(0.45, "easeOut")}
+            {...mainThread}
           />
           <motion.span
             className="menu-item-bar"
@@ -151,6 +153,7 @@ function MenuItem({ href: to, eyebrow, title, index, current, reduce, onNavigate
               hover: { scaleY: 1, opacity: 1 },
             }}
             transition={tween(0.5, EXPO)}
+            {...mainThread}
           />
           <motion.span
             className="menu-item-rule"
@@ -201,6 +204,7 @@ function AsideLink({ index, reduce, icon, label, children }: AsideLinkProps) {
       animate={{ opacity: 1, x: 0 }}
       transition={reduce ? { duration: 0 } : { delay: 0.65 + 0.06 * index, duration: 0.4 }}
       whileHover={reduce ? undefined : { x: 4 }}
+      {...mainThread}
     >
       {children(
         <>
@@ -213,6 +217,11 @@ function AsideLink({ index, reduce, icon, label, children }: AsideLinkProps) {
       )}
     </motion.div>
   );
+}
+
+function MenuScrim() {
+  const present = useIsPresent();
+  return <div className="menu-scrim" data-exiting={present ? undefined : ""} aria-hidden="true" />;
 }
 
 export function Navbar({ locale, dict }: NavbarProps) {
@@ -258,14 +267,14 @@ export function Navbar({ locale, dict }: NavbarProps) {
     if (!open) {
       if (restoreFocus.current) {
         restoreFocus.current = false;
-        toggleRef.current?.focus();
+        toggleRef.current?.focus({ preventScroll: true });
       }
       return;
     }
 
     restoreFocus.current = true;
     const firstItem = overlayRef.current?.querySelector<HTMLElement>(".menu-item");
-    (firstItem ?? visibleFocusables(overlayRef.current)[0])?.focus();
+    (firstItem ?? visibleFocusables(overlayRef.current)[0])?.focus({ preventScroll: true });
 
     const scrollable = (target: EventTarget | null) =>
       target instanceof Node && Boolean((target as Element).closest?.(".menu-list"));
@@ -301,10 +310,10 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
       if (event.shiftKey && active === firstNode) {
         event.preventDefault();
-        lastNode.focus();
+        lastNode.focus({ preventScroll: true });
       } else if (!event.shiftKey && active === lastNode) {
         event.preventDefault();
-        firstNode.focus();
+        firstNode.focus({ preventScroll: true });
       }
     };
 
@@ -352,6 +361,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
             <motion.span
               animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }}
               transition={{ duration: reduce ? 0 : 0.2 }}
+              {...mainThread}
             />
             <motion.span
               animate={{ rotate: open ? -45 : 0, y: open ? -8 : 0 }}
@@ -364,13 +374,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
       <AnimatePresence mode="wait" onExitComplete={() => emitMenuState(false)}>
         {open && (
           <div className="menu-overlay" id="main-menu">
-            <motion.div
-              className="menu-scrim"
-              initial={false}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reduce ? 0 : 0.35 }}
-              aria-hidden="true"
-            />
+            <MenuScrim />
             <motion.div
               className="menu-tint"
               initial={{ opacity: 0 }}
@@ -379,6 +383,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
               transition={{ duration: reduce ? 0 : 0.35 }}
               onClick={closeMenu}
               aria-hidden="true"
+              {...mainThread}
             />
             <div
               className="menu-panels"
@@ -398,6 +403,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={reduce ? { duration: 0 } : { delay: 0.55, duration: 0.5 }}
+                  {...mainThread}
                 >
                   <div className="menu-aside-group">
                     <span className="menu-aside-label">{dict.footer.directGroup}</span>
@@ -465,6 +471,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.4 }}
+                    {...mainThread}
                   >
                     <Link
                       className="menu-foot-cta"
@@ -484,6 +491,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduce ? { duration: 0 } : { delay: 0.7, duration: 0.5 }}
+                {...mainThread}
               >
                 {legalLinks.map((link) => (
                   <Link

@@ -205,6 +205,21 @@
         position: absolute;
         inset: 0;
         backdrop-filter: blur(8px);
+        animation: menu-scrim-in 350ms ease both;
+    }
+
+    .menu-scrim[data-exiting] {
+        animation: menu-scrim-out 350ms ease both;
+    }
+
+    @keyframes menu-scrim-in {
+        from { backdrop-filter: blur(0); }
+        to { backdrop-filter: blur(8px); }
+    }
+
+    @keyframes menu-scrim-out {
+        from { backdrop-filter: blur(8px); }
+        to { backdrop-filter: blur(0); }
     }
 
     .menu-tint {
@@ -221,6 +236,7 @@
         width: 100%;
         flex-direction: column;
         overflow: hidden;
+        overflow: clip;
     }
 
     .menu-aside {
