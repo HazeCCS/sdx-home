@@ -13,9 +13,9 @@ export const en: Dictionary = {
         "Learn more about SDX Solutions UG (haftungsbeschränkt), how we work and what we deliver in software development, apps, websites and web services.",
     },
     snusdex: {
-      title: "Snusdex — Product overview by SDX Solutions",
+      title: "Snusdex — Check it. Review it. Collect it. | SDX Solutions",
       description:
-        "Snusdex is the mobile product platform for tobacco-free nicotine pouches: discover, compare and keep your personal overview.",
+        "Snusdex is now on the App Store: scan cans, review nicotine pouches on six criteria, collect them in your Dex and compare with friends. Adults only.",
     },
     driveRadar: {
       title: "DriveRadar — Fuel prices and route planning | SDX Solutions",
@@ -90,12 +90,15 @@ export const en: Dictionary = {
     intro:
       "We build and ship our own software. That keeps our work close to real users, releases and day-to-day operation.",
     statusInDevelopment: "In development",
+    statusAvailable: "Available now",
     comingSoon: "Coming soon",
+    storeLive: "Live",
+    laterThisYear: "Later this year",
     snusdex: {
-      type: "Mobile product platform",
+      type: "iOS app",
       description:
-        "A clear product catalogue for tobacco-free nicotine pouches – to discover, compare and organise for yourself.",
-      meta: ["Catalogue", "Compare", "Favourites"],
+        "Scan cans, review nicotine pouches on six criteria and build your collection in the Dex. With Community Picks, friends and badges.",
+      meta: ["Dex", "Reviews", "Friends"],
       storeAria: "Snusdex downloads",
     },
     fuelpilot: {
@@ -197,45 +200,6 @@ export const en: Dictionary = {
     contactText:
       "Briefly describe what should be built. We'll get back to you with a realistic assessment.",
     contactButton: "Start a project",
-  },
-  snusdex: {
-    heroEyebrow: "Own product · In development",
-    heroTitle: "Snusdex",
-    heroParagraph:
-      "A mobile product platform for tobacco-free nicotine pouches – clear, comparable and made for quick use on the go.",
-    heroStoreAria: "Snusdex downloads",
-    shotAlt: "Detail from the Snusdex app",
-    ideaEyebrow: "The idea",
-    ideaTitleLine1: "Understand products,",
-    ideaTitleEm: "without the long search.",
-    ideaIntro:
-      "Snusdex brings product information and personal orientation together in a clear mobile interface.",
-    features: [
-      {
-        title: "Discover",
-        text: "Search products in a structured way and find relevant variants faster.",
-      },
-      {
-        title: "Compare",
-        text: "Assess characteristics and lay out differences clearly side by side.",
-      },
-      {
-        title: "Collection",
-        text: "Keep favourites and personal entries in one place.",
-      },
-    ],
-    noteEyebrow: "Context",
-    noteTitleLine1: "An information product,",
-    noteTitleEm: "not an online shop.",
-    noteProse: [
-      "Snusdex is for information and personal organisation. No nicotine products are sold through the platform.",
-      "The content is aimed at adults and does not constitute medical or health advice.",
-    ],
-    contactEyebrow: "Product & partnership",
-    contactTitle: "Questions about Snusdex?",
-    contactText:
-      "For product questions, partnerships or business enquiries, reach us directly.",
-    contactButton: "Get in touch",
   },
   contact: {
     heroEyebrow: "Contact",

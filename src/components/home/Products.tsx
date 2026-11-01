@@ -3,6 +3,7 @@ import { ProductCard, type Product } from "@/components/product/ProductCard";
 import { reveal } from "@/motion/reveal";
 import { href } from "@/i18n/routing";
 import type { Locale } from "@/i18n/config";
+import { snusdexAppStoreUrl } from "@/lib/site";
 
 export function Products({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const t = dict.products;
@@ -12,15 +13,15 @@ export function Products({ dict, locale }: { dict: Dictionary; locale: Locale })
       id: "snusdex",
       variantClass: "product-card--snusdex",
       index: "01",
-      status: t.statusInDevelopment,
+      status: t.statusAvailable,
       type: t.snusdex.type,
       name: "Snusdex",
       description: t.snusdex.description,
       meta: t.snusdex.meta,
       storeAriaLabel: t.snusdex.storeAria,
       stores: [
-        { label: "iOS App Store", note: t.comingSoon },
-        { label: "Google Play", note: t.comingSoon },
+        { label: "iOS App Store", note: t.storeLive, href: snusdexAppStoreUrl },
+        { label: "Google Play", note: t.laterThisYear },
       ],
       detailHref: href(locale, "snusdex"),
       detailLabel: locale === "de" ? "Produkt ansehen" : "Explore product",

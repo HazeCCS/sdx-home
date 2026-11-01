@@ -12,7 +12,7 @@ export type Product = {
   description: string;
   meta: string[];
   storeAriaLabel: string;
-  stores: { label: string; note: string }[];
+  stores: { label: string; note: string; href?: string }[];
   detailHref?: string;
   detailLabel?: string;
 };

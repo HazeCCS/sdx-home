@@ -11,9 +11,9 @@ export const de = {
         "Erfahren Sie mehr über SDX Solutions UG (haftungsbeschränkt), unsere Arbeitsweise und unsere Leistungen in Softwareentwicklung, Apps, Websites und Webservices.",
     },
     snusdex: {
-      title: "Snusdex — Produktübersicht von SDX Solutions",
+      title: "Snusdex — Check it. Review it. Collect it. | SDX Solutions",
       description:
-        "Snusdex ist die mobile Produktplattform für tabakfreie Nikotinbeutel: entdecken, vergleichen und den persönlichen Überblick behalten.",
+        "Snusdex ist jetzt im App Store: Scanne Dosen, bewerte Nicotine Pouches nach sechs Kriterien, sammle sie im Dex und vergleiche dich mit Freunden. Nur für Erwachsene.",
     },
     driveRadar: {
       title: "DriveRadar — Tankpreise und Routenplanung | SDX Solutions",
@@ -87,12 +87,15 @@ export const de = {
     intro:
       "Wir entwickeln und veröffentlichen eigene Software. Das hält unsere Arbeit nah an echten Nutzern, Releases und laufendem Betrieb.",
     statusInDevelopment: "In Entwicklung",
+    statusAvailable: "Jetzt verfügbar",
     comingSoon: "Coming soon",
+    storeLive: "Live",
+    laterThisYear: "Später in diesem Jahr",
     snusdex: {
-      type: "Mobile Produktplattform",
+      type: "iOS App",
       description:
-        "Ein übersichtlicher Produktkatalog für tabakfreie Nicotine Pouches – zum Entdecken, Vergleichen und persönlichen Einordnen.",
-      meta: ["Katalog", "Vergleich", "Favoriten"],
+        "Scanne Dosen, bewerte Nicotine Pouches nach sechs Kriterien und baue deine Sammlung im Dex auf. Mit Community Picks, Freunden und Abzeichen.",
+      meta: ["Dex", "Bewertungen", "Freunde"],
       storeAria: "Snusdex Downloads",
     },
     fuelpilot: {
@@ -194,45 +197,6 @@ export const de = {
     contactText:
       "Beschreiben Sie kurz, was entstehen soll. Wir melden uns mit einer realistischen Einschätzung.",
     contactButton: "Projekt anfragen",
-  },
-  snusdex: {
-    heroEyebrow: "Eigenes Produkt · In Entwicklung",
-    heroTitle: "Snusdex",
-    heroParagraph:
-      "Eine mobile Produktplattform für tabakfreie Nikotinbeutel – übersichtlich, vergleichbar und für den schnellen Einsatz unterwegs gedacht.",
-    heroStoreAria: "Snusdex Downloads",
-    shotAlt: "Ausschnitt aus der Snusdex App",
-    ideaEyebrow: "Die Idee",
-    ideaTitleLine1: "Produkte verstehen,",
-    ideaTitleEm: "ohne lange zu suchen.",
-    ideaIntro:
-      "Snusdex bündelt Produktinformationen und persönliche Orientierung in einer klaren mobilen Oberfläche.",
-    features: [
-      {
-        title: "Entdecken",
-        text: "Produkte strukturiert durchsuchen und relevante Varianten schneller finden.",
-      },
-      {
-        title: "Vergleichen",
-        text: "Eigenschaften einordnen und Unterschiede übersichtlich gegenüberstellen.",
-      },
-      {
-        title: "Sammlung",
-        text: "Favoriten und persönliche Einträge an einem Ort im Blick behalten.",
-      },
-    ],
-    noteEyebrow: "Einordnung",
-    noteTitleLine1: "Informationsprodukt,",
-    noteTitleEm: "kein Onlineshop.",
-    noteProse: [
-      "Snusdex dient der Information und persönlichen Organisation. Über die Plattform werden keine Nikotinprodukte verkauft.",
-      "Die Inhalte richten sich an Erwachsene und stellen keine medizinische oder gesundheitliche Beratung dar.",
-    ],
-    contactEyebrow: "Produkt & Partnerschaft",
-    contactTitle: "Fragen zu Snusdex?",
-    contactText:
-      "Für Produktfragen, Kooperationen oder geschäftliche Anfragen erreichen Sie uns direkt.",
-    contactButton: "Kontakt aufnehmen",
   },
   contact: {
     heroEyebrow: "Kontakt",
