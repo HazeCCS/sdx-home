@@ -14,6 +14,7 @@ export function Process({ dict }: { dict: Dictionary }) {
         <ol className="process-steps">
           {t.steps.map((step, index) => (
             <li key={step.title} {...reveal(index)}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <div>
                 <strong>{step.title}</strong>
                 <p>{step.text}</p>

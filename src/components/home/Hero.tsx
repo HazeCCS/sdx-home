@@ -23,15 +23,10 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <Button href={href(locale, "contact", "anfrage")} variant="primary">
             {t.ctaPrimary}
           </Button>
-          <a className="text-link" href="#products">
-            {t.productsLink} <span aria-hidden="true">↓</span>
-          </a>
+          <Button href="#products" variant="ghost" arrow="↓">
+            {t.productsLink}
+          </Button>
         </div>
-      </div>
-      <div className="hero-capabilities" aria-label={t.capabilitiesAria}>
-        {t.capabilities.map((item) => (
-          <span key={item}>{item}</span>
-        ))}
       </div>
     </section>
   );

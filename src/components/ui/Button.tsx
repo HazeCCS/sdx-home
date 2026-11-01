@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "dark";
+  variant?: "primary" | "dark" | "ghost";
   arrow?: string;
   className?: string;
 };

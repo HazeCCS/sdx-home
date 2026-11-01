@@ -78,42 +78,31 @@ export const en: Dictionary = {
       "We build digital products, websites, mobile apps and custom tools – for our own ideas and on behalf of companies.",
     ctaPrimary: "Discuss your project",
     productsLink: "View products",
-    capabilitiesAria: "Areas of expertise",
-    capabilities: ["Software development", "Mobile apps", "Web services", "IT services"],
   },
   products: {
     eyebrow: "Own products",
     title: "Apps built in-house.",
-    intro:
-      "We build and ship our own software. That keeps our work close to real users, releases and day-to-day operation.",
     statusInDevelopment: "In development",
     statusAvailable: "Available now",
     comingSoon: "Coming soon",
-    storeLive: "Live",
-    laterThisYear: "Later this year",
+    appStore: "App Store",
+    details: "Learn more",
     snusdex: {
       type: "iOS app",
       description:
         "Scan cans, review nicotine pouches on six criteria and build your collection in the Dex. With Community Picks, friends and badges.",
-      meta: ["Dex", "Reviews", "Friends"],
-      storeAria: "Snusdex downloads",
+      imageAlt: "Snusdex home screen with collector ID and stats",
     },
     fuelpilot: {
       type: "iOS mobility app",
       description: "Find nearby fuel stations, compare prices and plan your next trip with DriveRadar+.",
-      meta: ["Fuel prices", "Map", "DriveRadar+"],
-      storeAria: "DriveRadar availability",
+      imageAlt: "DriveRadar map with fuel prices in Munich",
     },
   },
   services: {
     eyebrow: "SDX Solutions UG",
     titleLine1: "Digital solutions,",
     titleEm: "cleanly delivered.",
-    intro:
-      "From the first idea to the published product. We take on clearly scoped projects as well as the complete technical implementation.",
-    purposeLabel: "Company purpose",
-    purposeText:
-      "Development, publishing and distribution of software, mobile applications and web services, as well as the provision of IT services.",
     items: [
       {
         title: "Websites",

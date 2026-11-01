@@ -11,45 +11,37 @@ export function Products({ dict, locale }: { dict: Dictionary; locale: Locale })
   const products: Product[] = [
     {
       id: "snusdex",
-      variantClass: "product-card--snusdex",
-      index: "01",
+      theme: "snusdex",
       status: t.statusAvailable,
+      live: true,
       type: t.snusdex.type,
       name: "Snusdex",
       description: t.snusdex.description,
-      meta: t.snusdex.meta,
-      storeAriaLabel: t.snusdex.storeAria,
-      stores: [
-        { label: "iOS App Store", note: t.storeLive, href: snusdexAppStoreUrl },
-        { label: "Google Play", note: t.laterThisYear },
-      ],
+      image: { src: "/snusdex/home.webp", alt: t.snusdex.imageAlt, width: 760, height: 1652 },
+      store: { label: t.appStore, href: snusdexAppStoreUrl },
       detailHref: href(locale, "snusdex"),
-      detailLabel: locale === "de" ? "Produkt ansehen" : "Explore product",
+      detailLabel: t.details,
     },
     {
       id: "driveradar",
-      variantClass: "product-card--soft product-card--driveradar",
-      index: "02",
+      theme: "driveradar",
       status: t.statusInDevelopment,
+      live: false,
       type: t.fuelpilot.type,
       name: "DriveRadar",
       description: t.fuelpilot.description,
-      meta: t.fuelpilot.meta,
-      storeAriaLabel: t.fuelpilot.storeAria,
-      stores: [{ label: "iOS App Store", note: t.comingSoon }],
+      image: { src: "/driveradar-muenchen-plus.png", alt: t.fuelpilot.imageAlt, width: 1206, height: 2622 },
+      store: { label: t.appStore, note: t.comingSoon },
       detailHref: href(locale, "driveRadar"),
-      detailLabel: locale === "de" ? "Produkt ansehen" : "Explore product",
+      detailLabel: t.details,
     },
   ];
 
   return (
     <section id="products" className="section section--products" aria-labelledby="products-title">
       <div className="container">
-        <header className="section-header" {...reveal(0)}>
-          <div>
-            <h2 id="products-title">{t.title}</h2>
-          </div>
-          <p>{t.intro}</p>
+        <header className="section-heading" {...reveal(0)}>
+          <h2 id="products-title">{t.title}</h2>
         </header>
 
         <div className="product-grid">

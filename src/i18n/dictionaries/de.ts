@@ -75,42 +75,31 @@ export const de = {
       "Wir entwickeln digitale Produkte, Websites, mobile Apps und individuelle Tools – für eigene Ideen und im Auftrag von Unternehmen.",
     ctaPrimary: "Projekt besprechen",
     productsLink: "Produkte ansehen",
-    capabilitiesAria: "Leistungsbereiche",
-    capabilities: ["Softwareentwicklung", "Mobile Apps", "Webservices", "IT-Dienstleistungen"],
   },
   products: {
     eyebrow: "Eigene Produkte",
     title: "Apps aus dem eigenen Haus.",
-    intro:
-      "Wir entwickeln und veröffentlichen eigene Software. Das hält unsere Arbeit nah an echten Nutzern, Releases und laufendem Betrieb.",
     statusInDevelopment: "In Entwicklung",
     statusAvailable: "Jetzt verfügbar",
     comingSoon: "Coming soon",
-    storeLive: "Live",
-    laterThisYear: "Später in diesem Jahr",
+    appStore: "App Store",
+    details: "Mehr erfahren",
     snusdex: {
       type: "iOS App",
       description:
         "Scanne Dosen, bewerte Nicotine Pouches nach sechs Kriterien und baue deine Sammlung im Dex auf. Mit Community Picks, Freunden und Abzeichen.",
-      meta: ["Dex", "Bewertungen", "Freunde"],
-      storeAria: "Snusdex Downloads",
+      imageAlt: "Snusdex Startbildschirm mit Collector ID und Statistiken",
     },
     fuelpilot: {
       type: "iOS Mobilitäts-App",
       description: "Tankstellen in deiner Nähe finden, Preise vergleichen und mit DriveRadar+ die nächste Fahrt planen.",
-      meta: ["Tankpreise", "Karte", "DriveRadar+"],
-      storeAria: "DriveRadar Verfügbarkeit",
+      imageAlt: "DriveRadar Karte mit Tankpreisen in München",
     },
   },
   services: {
     eyebrow: "SDX Solutions UG",
     titleLine1: "Digitale Lösungen,",
     titleEm: "sauber umgesetzt.",
-    intro:
-      "Von der ersten Idee bis zum veröffentlichten Produkt. Wir übernehmen klar abgegrenzte Projekte ebenso wie die vollständige technische Umsetzung.",
-    purposeLabel: "Unternehmensgegenstand",
-    purposeText:
-      "Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie Erbringung von IT-Dienstleistungen.",
     items: [
       {
         title: "Websites",
