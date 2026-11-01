@@ -3,55 +3,52 @@ import type { Dictionary } from "./de";
 export const en: Dictionary = {
   meta: {
     home: {
-      title: "SDX Solutions UG (haftungsbeschränkt) — Software & IT Services",
+      title: "SDX Solutions UG (haftungsbeschränkt) | Software & IT Services",
       description:
         "SDX Solutions UG (haftungsbeschränkt) builds websites, mobile apps, custom software and web services for companies and individuals.",
     },
     about: {
-      title: "About SDX Solutions — SDX Solutions UG (haftungsbeschränkt)",
+      title: "About SDX Solutions | SDX Solutions UG (haftungsbeschränkt)",
       description:
         "Learn more about SDX Solutions UG (haftungsbeschränkt), how we work and what we deliver in software development, apps, websites and web services.",
     },
     snusdex: {
-      title: "Snusdex — Check it. Review it. Collect it. | SDX Solutions",
+      title: "Snusdex App: Scan, Review and Collect Nicotine Pouches",
       description:
-        "Snusdex is now on the App Store: scan cans, review nicotine pouches on six criteria, collect them in your Dex and compare with friends. Adults only.",
+        "Snusdex is on the App Store: scan cans, rate nicotine pouches on six criteria, collect them in your Dex and compare with friends. Adults only.",
     },
     driveRadar: {
-      title: "DriveRadar — Fuel prices and route planning | SDX Solutions",
+      title: "DriveRadar: Fuel prices and route planning | SDX Solutions",
       description: "DriveRadar shows nearby fuel prices on a map and offers place search, price forecasts and route planning with DriveRadar+.",
     },
     contact: {
-      title: "Contact & Project Enquiry — SDX Solutions",
+      title: "Contact & Project Enquiry | SDX Solutions",
       description:
         "Get in touch with SDX Solutions UG (haftungsbeschränkt) for websites, apps, custom software, tools and web services.",
     },
     imprint: {
-      title: "Legal Notice — SDX Solutions UG (haftungsbeschränkt)",
+      title: "Legal Notice | SDX Solutions UG (haftungsbeschränkt)",
       description:
         "Legal notice of SDX Solutions UG (haftungsbeschränkt). This document is available in German only, as required by law.",
     },
     privacy: {
-      title: "Privacy Policy — SDX Solutions UG (haftungsbeschränkt)",
+      title: "Privacy Policy | SDX Solutions UG (haftungsbeschränkt)",
       description:
         "Privacy policy of SDX Solutions UG (haftungsbeschränkt). This document is available in German only, as required by law.",
     },
     snusdexPrivacy: {
-      title: "Privacy policy for the Snusdex app — SDX Solutions",
+      title: "Privacy policy for the Snusdex app | SDX Solutions",
       description:
         "Privacy policy of SDX Solutions UG (haftungsbeschränkt) for the Snusdex app, accounts, app features, consent choices and service providers.",
     },
     driveRadarPrivacy: {
-      title: "DriveRadar app privacy — SDX Solutions",
+      title: "DriveRadar app privacy | SDX Solutions",
       description: "Privacy information for the DriveRadar app. The legal text is available in German.",
     },
     driveRadarTerms: {
-      title: "DriveRadar terms of use — SDX Solutions",
+      title: "DriveRadar terms of use | SDX Solutions",
       description: "Terms of use and subscription information for DriveRadar. The legal text is available in German.",
     },
-    ogTitle: "SDX Solutions UG (haftungsbeschränkt) — Digital Solutions",
-    ogDescription:
-      "Development, publishing and distribution of software, mobile applications and web services, plus IT services for companies.",
     ogLocale: "en_US",
   },
   nav: {

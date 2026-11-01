@@ -1,40 +1,23 @@
 import type { Metadata } from "next";
-import type { Locale } from "@/i18n/config";
+import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { routes, type RouteKey } from "@/i18n/routing";
+import { snusdexAppStoreId } from "@/lib/site";
 
-type PageMetaKey =
-  | "home"
-  | "about"
-  | "snusdex"
-  | "driveRadar"
-  | "contact"
-  | "imprint"
-  | "privacy"
-  | "snusdexPrivacy"
-  | "driveRadarPrivacy"
-  | "driveRadarTerms";
-
-const pathForKey: Record<PageMetaKey, string> = {
-  home: "",
-  about: "/ueber-uns",
-  snusdex: "/snusdex",
-  driveRadar: "/driveradar",
-  contact: "/kontakt",
-  imprint: "/impressum",
-  privacy: "/datenschutz",
-  snusdexPrivacy: "/datenschutz/snusdex",
-  driveRadarPrivacy: "/datenschutz/driveradar",
-  driveRadarTerms: "/nutzungsbedingungen/driveradar",
+const ogImages: Partial<Record<RouteKey, string>> = {
+  snusdex: "/og/snusdex.png",
 };
 
-export function createPageMetadata(locale: Locale, key: PageMetaKey): Metadata {
+const defaultOgImage = "/og/default.png";
+
+export function createPageMetadata(locale: Locale, key: RouteKey): Metadata {
   const dict = getDictionary(locale);
-  const path = pathForKey[key];
+  const path = routes[key];
   const page = dict.meta[key];
+  const image = ogImages[key] ?? defaultOgImage;
 
   const languages: Record<string, string> = {
-    de: `/de${path}`,
-    en: `/en${path}`,
+    ...Object.fromEntries(locales.map((code) => [code, `/${code}${path}`])),
     "x-default": `/de${path}`,
   };
 
@@ -46,11 +29,23 @@ export function createPageMetadata(locale: Locale, key: PageMetaKey): Metadata {
       languages,
     },
     openGraph: {
-      title: dict.meta.ogTitle,
-      description: dict.meta.ogDescription,
+      title: page.title,
+      description: page.description,
       type: "website",
+      siteName: "SDX Solutions",
       locale: dict.meta.ogLocale,
+      alternateLocale: locales
+        .filter((code) => code !== locale)
+        .map((code) => getDictionary(code).meta.ogLocale),
       url: `/${locale}${path}`,
+      images: [{ url: image, width: 1200, height: 630, alt: page.title }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: page.title,
+      description: page.description,
+      images: [image],
+    },
+    ...(key === "snusdex" ? { itunes: { appId: snusdexAppStoreId } } : {}),
   };
 }

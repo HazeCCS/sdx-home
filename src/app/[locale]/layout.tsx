@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { siteUrl } from "@/lib/site";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionRoot } from "@/components/motion/MotionRoot";
@@ -17,7 +18,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sdxsolutions.de"),
+  metadataBase: new URL(siteUrl),
   robots: { index: true, follow: true },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

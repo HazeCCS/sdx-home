@@ -1,54 +1,51 @@
 export const de = {
   meta: {
     home: {
-      title: "SDX Solutions UG (haftungsbeschränkt) — Software & IT-Dienstleistungen",
+      title: "SDX Solutions UG (haftungsbeschränkt) | Software & IT-Dienstleistungen",
       description:
         "SDX Solutions UG (haftungsbeschränkt) entwickelt Websites, mobile Apps, individuelle Software und Webservices für Unternehmen und Privatpersonen.",
     },
     about: {
-      title: "Über SDX Solutions — SDX Solutions UG (haftungsbeschränkt)",
+      title: "Über SDX Solutions | SDX Solutions UG (haftungsbeschränkt)",
       description:
         "Erfahren Sie mehr über SDX Solutions UG (haftungsbeschränkt), unsere Arbeitsweise und unsere Leistungen in Softwareentwicklung, Apps, Websites und Webservices.",
     },
     snusdex: {
-      title: "Snusdex — Check it. Review it. Collect it. | SDX Solutions",
+      title: "Snusdex App: Nicotine Pouches scannen, bewerten, sammeln",
       description:
-        "Snusdex ist jetzt im App Store: Scanne Dosen, bewerte Nicotine Pouches nach sechs Kriterien, sammle sie im Dex und vergleiche dich mit Freunden. Nur für Erwachsene.",
+        "Snusdex jetzt im App Store: Dosen scannen, Nicotine Pouches nach sechs Kriterien bewerten, im Dex sammeln und mit Freunden vergleichen. Ab 18.",
     },
     driveRadar: {
-      title: "DriveRadar — Tankpreise und Routenplanung | SDX Solutions",
+      title: "DriveRadar: Tankpreise und Routenplanung | SDX Solutions",
       description: "DriveRadar zeigt Tankstellenpreise auf der Karte, unterstützt die Ortssuche und ergänzt mit DriveRadar+ Preisprognosen und Routenplanung.",
     },
     contact: {
-      title: "Kontakt & Projektanfrage — SDX Solutions",
+      title: "Kontakt & Projektanfrage | SDX Solutions",
       description:
         "Kontaktieren Sie SDX Solutions UG (haftungsbeschränkt) für Websites, Apps, individuelle Software, Tools und Webservices.",
     },
     imprint: {
-      title: "Impressum — SDX Solutions UG (haftungsbeschränkt)",
+      title: "Impressum | SDX Solutions UG (haftungsbeschränkt)",
       description: "Impressum und Anbieterkennzeichnung der SDX Solutions UG (haftungsbeschränkt).",
     },
     privacy: {
-      title: "Datenschutzerklärung — SDX Solutions UG (haftungsbeschränkt)",
+      title: "Datenschutzerklärung | SDX Solutions UG (haftungsbeschränkt)",
       description:
         "Datenschutzerklärung der SDX Solutions UG (haftungsbeschränkt) für Website, Kontaktformular, Hosting und Webfonts.",
     },
     snusdexPrivacy: {
-      title: "Datenschutzerklärung für die Snusdex-App — SDX Solutions",
+      title: "Datenschutzerklärung für die Snusdex-App | SDX Solutions",
       description:
         "Datenschutzerklärung der SDX Solutions UG (haftungsbeschränkt) für die Snusdex-App, Konten, App-Funktionen, Einwilligungen und eingesetzte Dienstleister.",
     },
     driveRadarPrivacy: {
-      title: "Datenschutz in der DriveRadar-App — SDX Solutions",
+      title: "Datenschutz in der DriveRadar-App | SDX Solutions",
       description: "Datenschutzerklärung für DriveRadar: Standort, Tankstellenpreise, lokale Daten, Belegscanner und Abonnement.",
     },
     driveRadarTerms: {
-      title: "Nutzungsbedingungen für DriveRadar — SDX Solutions",
+      title: "Nutzungsbedingungen für DriveRadar | SDX Solutions",
       description: "Nutzungs- und Abonnementbedingungen für DriveRadar Free und DriveRadar+.",
     },
-    ogTitle: "SDX Solutions UG (haftungsbeschränkt) — Digitale Lösungen",
-    ogDescription:
-      "Entwicklung, Publishing und Vertrieb von Software, mobilen Applikationen und Webservices sowie IT-Dienstleistungen für Unternehmen.",
     ogLocale: "de_DE",
   },
   nav: {

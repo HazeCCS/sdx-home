@@ -1,3 +1,5 @@
+export const siteUrl = "https://www.sdxsolutions.de";
+
 export const company = {
   name: "SDX Solutions UG (haftungsbeschränkt)",
   shortName: "SDX Solutions",
@@ -9,4 +11,6 @@ export const company = {
   country: "DE",
 } as const;
 
-export const snusdexAppStoreUrl = "https://apps.apple.com/app/snusdex/id6799147967";
+export const snusdexAppStoreId = "6799147967";
+
+export const snusdexAppStoreUrl = `https://apps.apple.com/app/snusdex/id${snusdexAppStoreId}`;
