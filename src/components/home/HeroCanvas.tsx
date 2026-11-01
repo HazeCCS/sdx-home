@@ -29,7 +29,7 @@ export function HeroCanvas() {
     }
 
     function roundedSquare(x: number, y: number, size: number) {
-      if (!context) return;
+      if (!context || size <= 0) return;
       const radius = size * 0.1875;
       context.beginPath();
       context.roundRect(x, y, size, size, radius);
