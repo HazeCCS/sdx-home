@@ -232,6 +232,7 @@ const productNames: Record<string, { id: string; name: string }> = {
 export function Navbar({ locale, dict }: NavbarProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const reduceMotion = useReducedMotion();
   const reduce = Boolean(reduceMotion);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -257,6 +258,13 @@ export function Navbar({ locale, dict }: NavbarProps) {
   const isActive = (key: RouteKey) => pathname === localizedPath(locale, routes[key]);
 
   const closeMenu = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 8);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   useEffect(() => {
     closeMenu();
@@ -333,6 +341,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
 
   return (
     <>
+      <div className="nav-backdrop" data-scrolled={scrolled ? "" : undefined} aria-hidden="true" />
       <nav
         id="main-nav"
         className={open ? "is-menu-open" : undefined}

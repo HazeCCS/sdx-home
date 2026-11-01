@@ -126,6 +126,27 @@
         background: #202020;
     }
 
+    .nav-backdrop {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 80;
+        height: 104px;
+        border-bottom: 1px solid transparent;
+        background: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(0);
+        pointer-events: none;
+        transition:
+            background-color 320ms ease,
+            border-color 320ms ease,
+            backdrop-filter 320ms ease;
+    }
+
+    .nav-backdrop[data-scrolled] {
+        border-color: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.055);
+        backdrop-filter: blur(18px) saturate(1.3);
+    }
+
     #main-nav {
         position: fixed;
         inset: 0 0 auto;
