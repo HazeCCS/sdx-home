@@ -3145,26 +3145,48 @@ body:has(.driveradar-page) {
   border: 0;
 }
 
+.sx-faq {
+    display: grid;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: clamp(40px, 7vw, 110px);
+    align-items: start;
+}
+
+.sx-faq-head {
+    position: sticky;
+    top: 120px;
+}
+
 .sx-faq-list {
-    max-width: 820px;
-    margin: 56px auto 0;
-    border-bottom: 1px solid var(--sx-line);
+    display: grid;
+    gap: 12px;
 }
 
 .sx-faq-list details {
-    border-top: 1px solid var(--sx-line);
+    border: 1px solid var(--sx-line);
+    border-radius: 20px;
+    background: #111113;
+    transition: border-color .25s ease, background .25s ease;
+}
+
+.sx-faq-list details:hover {
+    border-color: rgba(255, 255, 255, .22);
+}
+
+.sx-faq-list details[open] {
+    border-color: rgba(255, 45, 63, .5);
+    background:
+        radial-gradient(ellipse 80% 120% at 0% 0%, rgba(255, 45, 63, .14), transparent 65%),
+        #111113;
 }
 
 .sx-faq-list summary {
-    display: flex;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) 36px;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 24px 0;
+    gap: 16px;
+    padding: 22px 24px;
     cursor: pointer;
-    font-size: clamp(17px, 2vw, 20px);
-    font-weight: 600;
-    letter-spacing: -.02em;
     list-style: none;
 }
 
@@ -3172,29 +3194,92 @@ body:has(.driveradar-page) {
     display: none;
 }
 
-.sx-faq-list summary::after {
-    content: "+";
-    flex: none;
-    color: var(--sx-muted);
-    font-size: 26px;
-    font-weight: 300;
-    line-height: 1;
-    transition: transform .25s ease;
-}
-
-.sx-faq-list details[open] summary::after {
-    transform: rotate(45deg);
-}
-
 .sx-faq-list summary:focus-visible {
-    outline: 2px solid rgba(255, 45, 63, .7);
-    outline-offset: 4px;
+    outline: 2px solid var(--sx-red);
+    outline-offset: -2px;
+    border-radius: 20px;
+}
+
+.sx-faq-index {
+    color: var(--sx-red);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sx-faq-question {
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: 1.35;
+}
+
+.sx-faq-toggle {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--sx-line);
+    border-radius: 50%;
+    transition: background .25s ease, border-color .25s ease, transform .3s ease;
+}
+
+.sx-faq-toggle::before,
+.sx-faq-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 1.5px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+}
+
+.sx-faq-toggle::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    transition: transform .3s ease;
+}
+
+.sx-faq-list details[open] .sx-faq-toggle {
+    border-color: var(--sx-red);
+    background: var(--sx-red);
+}
+
+.sx-faq-list details[open] .sx-faq-toggle::after {
+    transform: translate(-50%, -50%) rotate(0deg);
 }
 
 .sx-faq-list p {
-    max-width: 680px;
-    padding-bottom: 26px;
-    color: #a1a1a6;
+    max-width: 620px;
+    padding: 0 24px 26px 74px;
+    color: #b6b6bb;
     font-size: 15px;
     line-height: 1.75;
+}
+
+@media (max-width: 980px) {
+    .sx-faq {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
+    }
+
+    .sx-faq-head {
+        position: static;
+    }
+}
+
+@media (max-width: 520px) {
+    .sx-faq-list summary {
+        grid-template-columns: 28px minmax(0, 1fr) 32px;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .sx-faq-toggle {
+        width: 32px;
+        height: 32px;
+    }
+
+    .sx-faq-list p {
+        padding: 0 18px 22px 58px;
+    }
 }

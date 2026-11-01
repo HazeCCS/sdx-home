@@ -313,18 +313,22 @@ export default async function SnusdexPage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
-      <section className="section sx-section" aria-labelledby="faq-title">
+      <section className="section sx-section sx-section--raised" aria-labelledby="faq-title">
         <div className="container sx-faq">
-          <header className="sx-heading sx-heading--center" {...reveal(0)}>
+          <header className="sx-faq-head" {...reveal(0)}>
             <span className="sx-eyebrow">{t.faq.eyebrow}</span>
             <h2 id="faq-title">
               <Heading {...t.faq.title} />
             </h2>
           </header>
-          <div className="sx-faq-list" {...reveal(1)}>
-            {t.faq.items.map((item) => (
-              <details key={item.question}>
-                <summary>{item.question}</summary>
+          <div className="sx-faq-list">
+            {t.faq.items.map((item, index) => (
+              <details key={item.question} {...reveal(index)}>
+                <summary>
+                  <span className="sx-faq-index">0{index + 1}</span>
+                  <span className="sx-faq-question">{item.question}</span>
+                  <i className="sx-faq-toggle" aria-hidden="true" />
+                </summary>
                 <p>{item.answer}</p>
               </details>
             ))}
