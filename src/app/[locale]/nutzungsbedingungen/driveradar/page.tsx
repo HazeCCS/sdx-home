@@ -11,7 +11,7 @@ const sections: AppLegalSection[] = [
     id: "anbieter",
     title: "1. Anbieter und Geltungsbereich",
     paragraphs: [
-      "DriveRadar wird von der SDX Solutions UG (haftungsbeschränkt), Hauptstraße 12 1/2, 84416 Taufkirchen (Vils), Deutschland, vertreten durch den Geschäftsführer Norman Tarayan, angeboten. Kontakt: contact@sdxsolutions.de. Diese Bedingungen beschreiben die Nutzung der DriveRadar-iOS-App und des optionalen DriveRadar+-Abonnements. Für den Bezug der App und In-App-Käufe gelten zusätzlich die Bedingungen von Apple. Zwingende gesetzliche Verbraucherrechte bleiben unberührt.",
+      "DriveRadar wird von der SDX Solutions UG (haftungsbeschränkt), Hauptstraße 12 1/2, 84416 Taufkirchen (Vils), Deutschland, vertreten durch den Geschäftsführer Norman Tarayan, angeboten. Kontakt: contact@sdxsolutions.de. Diese Bedingungen beschreiben die Nutzung der DriveRadar-iOS-App und des optionalen DriveRadar+-Abonnements. Für den Bezug der App und In-App-Käufe gelten zusätzlich die Bedingungen von Apple. Soweit für den jeweiligen Store keine eigene Lizenzvereinbarung hinterlegt ist, gilt für die App-Lizenz die Apple-Standard-EULA. Zwingende gesetzliche Verbraucherrechte bleiben unberührt.",
     ],
     links: [{ label: "Impressum", href: "/de/impressum" }],
   },
@@ -36,9 +36,9 @@ const sections: AppLegalSection[] = [
     title: "4. Abonnement, Zahlung und Verlängerung",
     paragraphs: [
       "Für DriveRadar+ sind über Apple ein automatisch verlängerndes Monatsabonnement für 2,99 € pro Monat und ein Jahresabonnement für 24,99 € pro Jahr in Deutschland vorgesehen. Ein Produkt ist erst verfügbar, wenn Apple es im Kaufdialog anbietet; der dort für Ihren Apple-Account angezeigte Gesamtpreis ist maßgeblich. Berechtigte Apple-Accounts können ein siebentägiges kostenloses Probeabo erhalten, sofern Apple dieses Angebot im Kaufdialog für das gewählte Abo anzeigt. Danach beginnt die Zahlung zum dort ausgewiesenen Verlängerungspreis, sofern nicht rechtzeitig gekündigt wird. Die Zahlung wird von Apple abgewickelt. Nach einem erfolgreichen, verifizierten Kauf sind die Plus-Funktionen während des aktiven Anspruchs auf unterstützten Geräten mit demselben Apple-Account verfügbar. Eine Internetverbindung kann für Kauf, Statusabgleich und Live-Daten erforderlich sein.",
-      "Das Abonnement verlängert sich nach den im Apple-Kaufdialog angezeigten Bedingungen, bis es im Apple-Account gekündigt wird. Durch Löschen der App wird das Abo nicht gekündigt. Nach einer Kündigung bleibt der Zugang grundsätzlich bis zum Ende des bereits bezahlten Zeitraums bestehen. Die App bietet „Käufe wiederherstellen“ und „Abo verwalten“. Fragen zu Abbuchungen, Erstattungen und der Apple-Kaufabwicklung können auch direkt an Apple gerichtet werden. Gesetzliche Rechte bleiben unberührt.",
+      "Das Abonnement verlängert sich nach den im Apple-Kaufdialog angezeigten Bedingungen, bis es im Apple-Account gekündigt wird. Um die nächste Verlängerung zu vermeiden, kündigen Sie mindestens 24 Stunden vor Ablauf des jeweiligen Zeitraums in den Apple-Account-Einstellungen. Dies gilt auch für die kostenlose Probezeit; bei deren Kündigung kann der Zugriff bereits vor dem Ende der Probezeit entfallen. Durch Löschen der App wird das Abo nicht gekündigt. Nach einer Kündigung bleibt der Zugang grundsätzlich bis zum Ende des bereits bezahlten Zeitraums bestehen. Die App bietet „Käufe wiederherstellen“ und „Abo verwalten“. Fragen zu Abbuchungen, Erstattungen und der Apple-Kaufabwicklung können auch direkt an Apple gerichtet werden. Die Kündigung eines Abonnements und ein gesetzlicher Widerruf sind unterschiedliche Vorgänge. Für den Widerruf des Apple-Kaufs gelten die beim Kauf für Ihren Store mitgeteilte Widerrufsbelehrung und der dort beschriebene Ablauf. Die deutsche Apple-Widerrufsbelehrung ist nachfolgend verlinkt. Gesetzliche Rechte gegenüber uns bleiben unberührt.",
     ],
-    links: [{ label: "Apple-Abonnements verwalten", href: "https://apps.apple.com/account/subscriptions" }],
+    links: [{ label: "Apple-Abonnements verwalten", href: "https://apps.apple.com/account/subscriptions" }, { label: "Apple-Widerrufsbelehrung Deutschland", href: "https://www.apple.com/legal/internet-services/itunes/de/rightofwithdrawal-de.pdf" }],
   },
   {
     id: "daten",
@@ -53,14 +53,14 @@ const sections: AppLegalSection[] = [
     title: "6. Verfügbarkeit und Haftung",
     paragraphs: [
       "Wir bemühen uns um einen sicheren und funktionierenden Betrieb. Wartung, Netzausfälle, Störungen bei Apple, Karten- oder Preisdatenanbietern und technische Fehler können die Nutzung zeitweise einschränken. Für die sachliche Richtigkeit externer Live-Daten oder das Eintreten einer Prognose geben wir keine Garantie. Dies schränkt gesetzliche Gewährleistungs- und Haftungsrechte nicht ein. Für Vorsatz und grobe Fahrlässigkeit, Schäden aus der Verletzung von Leben, Körper oder Gesundheit sowie sonstige Fälle zwingender gesetzlicher Haftung gelten die gesetzlichen Regeln.",
-      "Sollten bezahlte Funktionen erheblich und dauerhaft nicht vertragsgemäß bereitgestellt werden, können Ihnen gesetzliche Rechte an digitalen Produkten zustehen. Wenden Sie sich an contact@sdxsolutions.de; die Zahlungsabwicklung über Apple bleibt davon unberührt.",
+      "Bei nicht vertragsgemäßer Bereitstellung gelten Ihre gesetzlichen Rechte für digitale Produkte. Dazu können insbesondere Nacherfüllung, Minderung, Vertragsbeendigung und Schadensersatz gehören, soweit die jeweiligen gesetzlichen Voraussetzungen vorliegen. Erforderliche Aktualisierungen einschließlich Sicherheitsaktualisierungen stellen wir im gesetzlich geschuldeten Zeitraum bereit und informieren darüber. Wenden Sie sich bei Problemen an contact@sdxsolutions.de; die Zahlungsabwicklung über Apple bleibt davon unberührt.",
     ],
   },
   {
     id: "aenderungen",
     title: "7. Änderungen und Kontakt",
     paragraphs: [
-      "Wir können diese Hinweise bei Änderungen der App, der Anbieter oder der Rechtslage aktualisieren. Änderungen eines bestehenden Abonnements erfolgen nur im Rahmen des geltenden Rechts und der App-Store-Regeln; wesentliche Änderungen werden angemessen mitgeteilt. Für Fragen zur App und zum Abo schreiben Sie an contact@sdxsolutions.de. Es gilt deutsches Recht, soweit dadurch zwingende Verbraucherschutzregeln des Landes Ihres gewöhnlichen Aufenthalts nicht entzogen werden.",
+      "Wir können diese Hinweise bei Änderungen der App, der Anbieter oder der Rechtslage aktualisieren. Die Aktualisierung dieser Hinweise ändert einen bestehenden Vertrag nicht automatisch. Änderungen bestehender Abonnements und digitaler Leistungen erfolgen nur unter den gesetzlichen Voraussetzungen und nach den App-Store-Regeln. Gesetzlich erforderliche Informationen über beeinträchtigende Änderungen werden rechtzeitig auf einem dauerhaften Datenträger erteilt; gesetzliche Beendigungsrechte bleiben unberührt. Für Fragen zur App und zum Abo schreiben Sie an contact@sdxsolutions.de. Es gilt deutsches Recht, soweit dadurch zwingende Verbraucherschutzregeln des Landes Ihres gewöhnlichen Aufenthalts nicht entzogen werden.",
     ],
   },
 ];
@@ -77,5 +77,5 @@ export default async function DriveRadarTermsPage({ params }: { params: Promise<
   if (locale !== "de") {
     return <LegalNotice title="DriveRadar terms of use" body="This legal document is currently available in German. The German version describes use of the DriveRadar app and its optional subscription." viewGermanLabel="View German version" germanHref={href("de", "driveRadarTerms")} />;
   }
-  return <AppLegalDocument title="Nutzungs- und Abonnementbedingungen für DriveRadar" intro="Hinweise zu den Funktionen, Daten, Preisen und dem optionalen DriveRadar+-Abonnement." updated="Stand: 14. Oktober 2026" sections={sections} />;
+  return <AppLegalDocument title="Nutzungs- und Abonnementbedingungen für DriveRadar" intro="Hinweise zu den Funktionen, Daten, Preisen und dem optionalen DriveRadar+-Abonnement." updated="Stand: 16. November 2026" sections={sections} />;
 }

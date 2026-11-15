@@ -41,7 +41,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           <h1>Datenschutz</h1>
           <p>
             Informationen zur Verarbeitung personenbezogener Daten auf dieser Website. Für
-            Snusdex und DriveRadar gelten eigene App-Datenschutzerklärungen. Stand: 12. Oktober 2026.
+            Snusdex und DriveRadar gelten eigene App-Datenschutzerklärungen. Stand: 16. November 2026.
           </p>
         </div>
       </header>
@@ -55,7 +55,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             <a href="#driveradar-app">DriveRadar-App</a>
             <a href="#hosting">Hosting</a>
             <a href="#kontaktformular">Kontakt</a>
-            <a href="#fonts">Google Fonts</a>
+            <a href="#fonts">Schriftarten</a>
             <a href="#cookies">Cookies &amp; Analyse</a>
             <a href="#rechte">Ihre Rechte</a>
           </aside>
@@ -165,26 +165,12 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             </section>
 
             <section id="fonts" className="legal-section" {...reveal(0)}>
-              <h2>Google Fonts</h2>
+              <h2>Lokal bereitgestellte Schriftarten</h2>
               <p>
-                Wir verwenden Google Fonts, einen Dienst der Google Ireland Limited, Gordon House,
-                Barrow Street, Dublin 4, Irland. Die Schriftdateien werden beim Aufruf einer Seite von
-                Servern von Google geladen. Dabei wird insbesondere Ihre IP-Adresse zusammen mit
-                technischen Browserinformationen an Google übermittelt. Eine Verarbeitung durch Google
-                LLC in den USA kann nicht ausgeschlossen werden.
-              </p>
-              <p>
-                Die Einbindung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes
-                Interesse liegt in einer einheitlichen, gut lesbaren und technisch effizienten
-                Darstellung der Website. Weitere Informationen finden Sie in den{" "}
-                <a href="https://developers.google.com/fonts/faq/privacy" rel="noreferrer">
-                  Datenschutzhinweisen zu Google Fonts
-                </a>{" "}
-                und der{" "}
-                <a href="https://policies.google.com/privacy?hl=de" rel="noreferrer">
-                  Datenschutzerklärung von Google
-                </a>
-                .
+                Die Schriftarten Inter und Instrument Serif werden zusammen mit dieser Website über
+                unseren Hostinganbieter ausgeliefert. Ihr Browser muss dafür keine Verbindung zu
+                Google Fonts oder anderen Schriftanbietern aufbauen. Für die technisch erforderliche
+                Auslieferung gelten die Hinweise im Abschnitt Hosting.
               </p>
             </section>
 
