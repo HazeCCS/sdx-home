@@ -16,8 +16,8 @@ export const de = {
         "Snusdex jetzt im App Store: Dosen scannen, Nicotine Pouches nach sechs Kriterien bewerten, im Dex sammeln und mit Freunden vergleichen. Ab 18.",
     },
     driveRadar: {
-      title: "DriveRadar: Tankpreise und Routenplanung | SDX Solutions",
-      description: "DriveRadar zeigt Tankstellenpreise auf der Karte, unterstützt die Ortssuche und ergänzt mit DriveRadar+ Preisprognosen und Routenplanung.",
+      title: "DriveRadar: Tankpreise vergleichen fürs iPhone",
+      description: "Vergleiche E5-, E10- und Dieselpreise in Deutschland kostenlos. Finde Tankstellen per Ortssuche oder Standort und lade DriveRadar für iPhone.",
     },
     contact: {
       title: "Kontakt & Projektanfrage | SDX Solutions",

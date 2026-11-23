@@ -18,8 +18,8 @@ export const en: Dictionary = {
         "Snusdex is on the App Store: scan cans, rate nicotine pouches on six criteria, collect them in your Dex and compare with friends. Adults only.",
     },
     driveRadar: {
-      title: "DriveRadar: Fuel prices and route planning | SDX Solutions",
-      description: "DriveRadar shows nearby fuel prices on a map and offers place search, price forecasts and route planning with DriveRadar+.",
+      title: "DriveRadar: Compare Fuel Prices in Germany on iPhone",
+      description: "Compare E5, E10 and diesel prices in Germany for free. Find nearby fuel stations or search by place and download DriveRadar for iPhone.",
     },
     contact: {
       title: "Contact & Project Enquiry | SDX Solutions",
