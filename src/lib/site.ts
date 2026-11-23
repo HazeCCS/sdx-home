@@ -14,3 +14,6 @@ export const company = {
 export const snusdexAppStoreId = "6799147967";
 
 export const snusdexAppStoreUrl = `https://apps.apple.com/app/snusdex/id${snusdexAppStoreId}`;
+
+export const driveRadarAppStoreId = "6823504266";
+export const driveRadarAppStoreUrl = `https://apps.apple.com/de/app/driveradar/id${driveRadarAppStoreId}`;

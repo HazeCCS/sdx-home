@@ -79,9 +79,7 @@ export const de = {
   products: {
     eyebrow: "Eigene Produkte",
     title: "Apps aus dem eigenen Haus.",
-    statusInDevelopment: "In Entwicklung",
     statusAvailable: "Jetzt verfügbar",
-    comingSoon: "Coming soon",
     appStore: "App Store",
     details: "Mehr erfahren",
     snusdex: {

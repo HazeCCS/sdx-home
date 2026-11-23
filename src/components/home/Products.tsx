@@ -3,7 +3,7 @@ import { ProductCard, type Product } from "@/components/product/ProductCard";
 import { reveal } from "@/motion/reveal";
 import { href } from "@/i18n/routing";
 import type { Locale } from "@/i18n/config";
-import { snusdexAppStoreUrl } from "@/lib/site";
+import { driveRadarAppStoreUrl, snusdexAppStoreUrl } from "@/lib/site";
 
 export function Products({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const t = dict.products;
@@ -25,13 +25,13 @@ export function Products({ dict, locale }: { dict: Dictionary; locale: Locale })
     {
       id: "driveradar",
       theme: "driveradar",
-      status: t.statusInDevelopment,
-      live: false,
+      status: t.statusAvailable,
+      live: true,
       type: t.fuelpilot.type,
       name: "DriveRadar",
       description: t.fuelpilot.description,
-      image: { src: "/driveradar-muenchen-plus.png", alt: t.fuelpilot.imageAlt, width: 1206, height: 2622 },
-      store: { label: t.appStore, note: t.comingSoon },
+      image: { src: "/driveradar/map.webp", alt: t.fuelpilot.imageAlt, width: 850, height: 1848 },
+      store: { label: t.appStore, href: driveRadarAppStoreUrl },
       detailHref: href(locale, "driveRadar"),
       detailLabel: t.details,
     },

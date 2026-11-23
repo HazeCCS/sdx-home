@@ -1984,13 +1984,13 @@
 }
 
 .driveradar-hero-grid {
-    min-height: min(850px, 94svh);
+    min-height: min(750px, 90svh);
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
     gap: clamp(35px, 6vw, 100px);
     align-items: center;
-    padding-top: clamp(110px, 12vw, 180px);
-    padding-bottom: 84px;
+    padding-top: clamp(108px, 8vw, 135px);
+    padding-bottom: 60px;
 }
 
 .driveradar-hero-copy { min-width: 0; }
@@ -2016,7 +2016,7 @@
 
 .driveradar-hero h1 {
     margin-top: 30px;
-    font-size: clamp(58px, 6.2vw, 108px);
+    font-size: clamp(50px, 5vw, 79px);
     line-height: .98;
 }
 
@@ -2039,7 +2039,7 @@
 
 .driveradar-visual { display: grid; justify-items: center; align-self: end; min-width: 0; }
 .driveradar-phone {
-    width: min(100%, 360px);
+    width: min(100%, 298px);
     overflow: hidden;
     border: 7px solid #202c27;
     border-radius: 52px;
@@ -2057,18 +2057,16 @@
 .driveradar-data-grid p,
 .driveradar-end-section p { max-width: 660px; margin-top: 26px; color: #aeb9b0; font-size: 16px; line-height: 1.75; }
 
-.driveradar-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 74px; }
-.driveradar-steps article { min-height: 250px; border-top: 1px solid rgba(216,250,127,.45); padding: 28px 16px 24px 0; }
-.driveradar-steps article > span,
-.driveradar-plus-features article > span { color: var(--radar-lime); font-size: 12px; font-weight: 700; }
-.driveradar-steps h3 { margin-top: 60px; font-size: 21px; letter-spacing: -.025em; }
+.driveradar-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
+.driveradar-steps article { border-top: 1px solid rgba(216,250,127,.45); padding: 28px 16px 24px 0; }
+.driveradar-steps h3 { font-size: 21px; letter-spacing: -.025em; }
 .driveradar-steps p,
 .driveradar-plus-features p { margin-top: 11px; color: #a1aaa3; font-size: 14px; line-height: 1.7; }
 
 .driveradar-plus-section { background: #101713; }
 .driveradar-plus-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(50px, 8vw, 130px); }
 .driveradar-plus-intro { align-self: start; }
-.driveradar-plus-features article { display: grid; grid-template-columns: 38px 1fr; gap: 24px; border-top: 1px solid rgba(255,255,255,.13); padding: 25px 0 27px; }
+.driveradar-plus-features article { border-top: 1px solid rgba(255,255,255,.13); padding: 25px 0 27px; }
 .driveradar-plus-features article:last-child { border-bottom: 1px solid rgba(255,255,255,.13); }
 .driveradar-plus-features h3 { font-size: 20px; letter-spacing: -.025em; }
 
@@ -2105,14 +2103,13 @@
 }
 
 @media (max-width: 620px) {
-    .driveradar-hero-grid { padding-top: 125px; padding-bottom: 70px; gap: 65px; }
+    .driveradar-hero-grid { padding-top: 96px; padding-bottom: 56px; gap: 2rem; }
     .driveradar-hero h1 { font-size: clamp(43px, 11vw, 64px); overflow-wrap: anywhere; }
     .driveradar-hero-copy > p { margin-top: 24px; }
     .driveradar-steps,
     .driveradar-plans { grid-template-columns: 1fr; }
     .driveradar-steps { gap: 0; margin-top: 48px; }
     .driveradar-steps article { min-height: auto; padding: 25px 0 30px; }
-    .driveradar-steps h3 { margin-top: 26px; }
     .driveradar-plan { min-height: auto; }
     .driveradar-plan ul { margin-top: 0; padding-top: 42px; }
     .driveradar-phone { width: min(76vw, 350px); }
@@ -3197,4 +3194,34 @@ body:has(.driveradar-page) {
     .sx-faq-list p {
         padding: 0 18px 22px 58px;
     }
+}
+
+.driveradar-hero-copy > .driveradar-availability { margin-top: .9rem; font-size: .875rem; }
+.driveradar-gallery { background: #0d1510; }
+.driveradar-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+    max-width: 960px;
+    margin: 2rem auto 0;
+}
+.driveradar-gallery h2 { text-align: center; }
+.driveradar-gallery img { width: 100%; height: auto; border-radius: 1rem; }
+.driveradar-gallery figcaption { margin-top: .75rem; color: #aeb9b0; font-size: .9375rem; }
+.driveradar-end-section .driveradar-actions { justify-content: center; }
+.driveradar-end-section .driveradar-actions .button { margin-top: 0; }
+
+@media (max-width: 620px) {
+    .driveradar-hero h1 { margin-top: 1.1rem; }
+    .driveradar-actions { margin-top: 1.5rem; }
+    .driveradar-hero .driveradar-actions .button { width: 100%; min-height: 48px; }
+    .driveradar-gallery-grid {
+        grid-template-columns: none;
+        grid-auto-columns: min(72vw, 300px);
+        grid-auto-flow: column;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+    }
+    .driveradar-gallery-grid figure { scroll-snap-align: start; }
 }

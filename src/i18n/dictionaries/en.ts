@@ -82,9 +82,7 @@ export const en: Dictionary = {
   products: {
     eyebrow: "Own products",
     title: "Apps built in-house.",
-    statusInDevelopment: "In development",
     statusAvailable: "Available now",
-    comingSoon: "Coming soon",
     appStore: "App Store",
     details: "Learn more",
     snusdex: {
